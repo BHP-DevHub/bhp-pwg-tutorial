@@ -1,11 +1,10 @@
-# Django Girls Tutorial
+# BHP Django Girls Tutorial
 
-This is the source code repository for the Django Girls Tutorial. Django Girls Tutorial is used on [tutorial.djangogirls.org](http://tutorial.djangogirls.org) so if you want to read it, please go there. If you want to contribute please do go further with this file.
-
+This is the source code repository for the BHP Django Girls Tutorial, closely based on the original Django Girls Tutorial used on [tutorial.djangogirls.org](http://tutorial.djangogirls.org). Contributions and updates are welcome.
 
 # How to contribute
 
-The Django Girls Tutorial is licensed under a [*Creative Commons Attribution-ShareAlike 4.0*](https://creativecommons.org/licenses/by-sa/4.0/) license. Everyone is free to add, edit and correct the tutorial.
+The Django Girls Tutorial is licensed under a [_Creative Commons Attribution-ShareAlike 4.0_](https://creativecommons.org/licenses/by-sa/4.0/) license. Everyone is free to add, edit and correct the tutorial.
 
 # Editing basics
 
@@ -24,7 +23,7 @@ You can find any discussions about the contents of the tutorial on the [Github i
 For contributing to the tutorial the following is needed to get started:
 
 * a [Github account](https://github.com)
-* in the case of complex edits familiarity with [Git command line basics](https://help.github.com/articles/set-up-git) or familiarity with an app ([Windows](https://windows.github.com/), [Mac](https://mac.github.com/)) to push your edits made on your computer to Github.
+* in the case of complex edits familiarity with [Git command line basics](https://help.github.com/articles/set-up-git) or familiarity with an app \([Windows](https://windows.github.com/), [Mac](https://mac.github.com/)\) to push your edits made on your computer to Github.
 
 ## Fork the repository
 
@@ -39,8 +38,8 @@ First fork the [DjangoGirls/tutorial](https://github.com/DjangoGirls/tutorial) r
 For simple changes like typo corrections you can use the Github online editor:
 
 * Open your local fork page on Github,
-* go to *README.md* file in any chapter,
-* press the *Edit* icon (pen)
+* go to _README.md_ file in any chapter,
+* press the _Edit_ icon \(pen\)
 
 and you can edit the chapter directly on github.com.
 
@@ -56,60 +55,66 @@ Save your changes and create a pull request as explained below.
 
 For adding new chapters, writing longer snippets of text or adding images, you need to get a copy of the tutorial to your local computer.
 
-Either use the Github app for your operating system (mentioned above) or `git` command line to get the repository locally. You get the repository address from the front page of your own Github repository fork:
+Either use the Github app for your operating system \(mentioned above\) or `git` command line to get the repository locally. You get the repository address from the front page of your own Github repository fork:
 
-    git clone git@github.com:yourgithubusername/tutorial.git
+```
+git clone git@github.com:yourgithubusername/tutorial.git
+```
 
 Then, create a branch for your new changes to sit in. It helps to call the branch something related to the changes you are going to make.
 
-    git checkout -b contributing
+```
+git checkout -b contributing
+```
 
 Download the [Gitbook Editor](https://www.gitbook.com/editor) app to your computer.
 
-Then you can open the tutorial in Gitbook Editor (*File* > *Open book*).
+Then you can open the tutorial in Gitbook Editor \(_File_ &gt; _Open book_\).
 
-Make any changes in the tutorial using Gitbook and then save changes (*Book* > *Save all*).
+Make any changes in the tutorial using Gitbook and then save changes \(_Book_ &gt; _Save all_\).
 
 Then commit the changes using `git` and push the changes to your remote Github repository.
 
 Example:
 
-    $ git status
-    On branch contributing
-    Untracked files:
-      (use "git add <file>..." to include in what will be committed)
+```
+$ git status
+On branch contributing
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
 
-        contributing_and_editing_this_book/images/gitbook.png
+    contributing_and_editing_this_book/images/gitbook.png
 
-    $ git add contributing_and_editing_this_book/images/gitbook.png
+$ git add contributing_and_editing_this_book/images/gitbook.png
 
-    $ git commit -m "Added gitbook editor screenshot"
-    [contributing fe36152] Added gitbook screenshot
-     1 file changed, 0 insertions(+), 0 deletions(-)
-     create mode 100644 contributing_and_editing_this_book/images/gitbook.png
+$ git commit -m "Added gitbook editor screenshot"
+[contributing fe36152] Added gitbook screenshot
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 contributing_and_editing_this_book/images/gitbook.png
 
-    $ git push
-    Counting objects: 11, done.
-    Delta compression using up to 8 threads.
-    Compressing objects: 100% (5/5), done.
-    Writing objects: 100% (5/5), 266.37 KiB | 0 bytes/s, done.
-    Total 5 (delta 1), reused 0 (delta 0)
-    To git@github.com:miohtama/tutorial.git
-       b37ca59..fe36152  contributing -> contributing
+$ git push
+Counting objects: 11, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 266.37 KiB | 0 bytes/s, done.
+Total 5 (delta 1), reused 0 (delta 0)
+To git@github.com:miohtama/tutorial.git
+   b37ca59..fe36152  contributing -> contributing
+```
 
 If you don't want to download the Gitbook Editor app you can also go to the [Gitbook website](https://www.gitbook.com/), sign up for free and work directly in your browser.
 
 # Making a pull request
 
-After you have finished your changes you need to create [a pull request](https://help.github.com/articles/using-pull-requests)  on Github. DjangoGirls will get notified about the pull request, review your changes, suggest any corrections if needed and then *pull* your changes to the master version.
+After you have finished your changes you need to create [a pull request](https://help.github.com/articles/using-pull-requests)  on Github. DjangoGirls will get notified about the pull request, review your changes, suggest any corrections if needed and then _pull_ your changes to the master version.
 
-In your own repository on Github press do *Compare & pull request*
+In your own repository on Github press do _Compare & pull request_
 
 ![Gitbook](contributing/images/pull_request.png)
 
-Fill in the information *why* this change is being made. The reviewer can see the details of the actual change, so you don't need repeat the content of the change.
+Fill in the information _why_ this change is being made. The reviewer can see the details of the actual change, so you don't need repeat the content of the change.
 
-Then press *Create pull request*.
+Then press _Create pull request_.
 
 Github emails will notify you for the follow up process.
 
@@ -118,3 +123,4 @@ Github emails will notify you for the follow up process.
 GitHub has an excellent [documentation](https://help.github.com/). Check it out if you need help!
 
 For further questions please [contact DjangoGirls](https://djangogirls.org/).
+
