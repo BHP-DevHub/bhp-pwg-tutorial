@@ -24,12 +24,7 @@ $ mkdir djangogirls
 $ cd djangogirls
 ```
 
-We will make a virtualenv called `myvenv`. The general command will be in the format:
-
-{% filename %}command-line{% endfilename %}
-```
-$ python3 -m venv myvenv
-```
+We will make a virtualenv called `myvenv`. See below for the instructions specific to your operating system.
 
 <!--sec data-title="Windows" data-id="virtualenv_installation_windows"
 data-collapse=true ces-->
@@ -45,10 +40,10 @@ where `C:\Python35` is the directory in which you previously installed Python an
 
 <!--endsec-->
 
-<!--sec data-title="Linux and OS X" data-id="virtualenv_installation_linuxosx"
+<!--sec data-title="Linux and Mac" data-id="virtualenv_installation_linuxosx"
 data-collapse=true ces-->
 
-Creating a `virtualenv` on both Linux and OS X is as simple as running `python3 -m venv myvenv`.
+Creating a `virtualenv` on both Linux and Mac is as simple as running `python3 -m venv myvenv`.
 It will look like this:
 
 {% filename %}command-line{% endfilename %}

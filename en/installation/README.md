@@ -25,16 +25,6 @@ data-id="chromebook_setup" data-collapse=true ces-->
 # Install a code editor
 {% include "/code_editor/instructions.md" %}
 
-# Install Git
-{% include "/deploy/install_git.md" %}
-
-# Create a GitHub account
-Go to [GitHub.com](https://www.github.com) and sign up for a new, free user account.
-
-# Create a PythonAnywhere account
-{% include "/deploy/signup_pythonanywhere.md" %}
-
-
 # Start reading
 
 Congratulations, you are all set up and ready to go! If you still have some time before the workshop, it would be useful to start reading a few of the beginning chapters:
