@@ -396,31 +396,6 @@ Change it to this:
 
 Since you're likely logged in, if you refresh the page, you won't see anything different. Load the page in a different browser or an incognito window, though, and you'll see that the link doesn't show up, and the icon doesn't display either!
 
-## One more thing: deploy time!
-
-Let's see if all this works on PythonAnywhere. Time for another deploy!
-
-* First, commit your new code, and push it up to Github:
-
-{% filename %}command-line{% endfilename %}
-```
-$ git status
-$ git add --all .
-$ git status
-$ git commit -m "Added views to create/edit blog post inside the site."
-$ git push
-```
-
-* Then, in a [PythonAnywhere Bash console](https://www.pythonanywhere.com/consoles/):
-
-{% filename %}command-line{% endfilename %}
-```
-$ cd my-first-blog
-$ git pull
-[...]
-```
-
-* Finally, hop on over to the [Web tab](https://www.pythonanywhere.com/web_app_setup/) and hit **Reload**.
 
 
 And that should be it! Congrats :)

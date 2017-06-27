@@ -2,7 +2,7 @@
 
 > This section is based on a tutorial by Geek Girls Carrots (https://github.com/ggcarrots/django-carrots)
 
-Django is written in Python. We need Python to do anything in Django. Let's start by installing it! We want you to install Python 3.5, so if you have any earlier version, you will need to upgrade it.
+Django is written in Python. We need Python to do anything in Django. Let's start by installing it! We want you to install Python 3.5 or later, so if you have any earlier version, you will need to upgrade it.
 
 
 <!--sec data-title="Windows" data-id="python_windows" data-collapse=true ces-->
@@ -27,7 +27,7 @@ If you install an older version of Python, the installation screen may look a bi
 
 <!--endsec-->
 
-<!--sec data-title="OS X" data-id="python_OSX"
+<!--sec data-title="Mac" data-id="python_OSX"
 data-collapse=true ces-->
 
 > **Note** Before you install Python on OS X, you should ensure your Mac settings allow installing packages that aren't from the App Store. Go to System Preferences (it's in the Applications folder), click "Security & Privacy," and then the "General" tab. If your "Allow apps downloaded from:" is set to "Mac App Store," change it to "Mac App Store and identified developers."

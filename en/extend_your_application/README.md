@@ -161,28 +161,3 @@ OK, we can refresh our page and see if `TemplateDoesNotExist` is gone now.
 
 Yay! It works!
 
-## One more thing: deploy time!
-
-It'd be good to see if your website will still be working on PythonAnywhere, right? Let's try deploying again.
-
-{% filename %}command-line{% endfilename %}
-```
-$ git status
-$ git add --all .
-$ git status
-$ git commit -m "Added view and template for detailed blog post as well as CSS for the site."
-$ git push
-```
-
-Then, in a [PythonAnywhere Bash console](https://www.pythonanywhere.com/consoles/):
-
-{% filename %}command-line{% endfilename %}
-```
-$ cd my-first-blog
-$ git pull
-[...]
-```
-
-Finally, hop on over to the [Web tab](https://www.pythonanywhere.com/web_app_setup/) and hit **Reload**.
-
-And that should be it! Congrats :)
