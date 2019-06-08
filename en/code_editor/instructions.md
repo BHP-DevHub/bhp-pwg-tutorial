@@ -1,18 +1,12 @@
-There are a lot of different editors and it largely boils down to personal preference. Most Python programmers use complex but extremely powerful IDEs \(Integrated Development Environments\), such as PyCharm. As a beginner, however, that's probably less suitable; our recommendations are equally powerful, but a lot simpler.
+There are a lot of different editors and it largely boils down to personal preference. Most Python programmers use complex but extremely powerful IDEs \(Integrated Development Environments\), such as PyCharm. As a beginner, however, that's probably less suitable; our recommendation is equally powerful, but a lot simpler.
 
-Our suggestions are below, but feel free to ask your coach what their preferences are – it'll be easier to get help from them.
+Our suggestion is below, but feel free to ask your coach what their preferences are – it'll be easier to get help from them.
 
-## Sublime Text 3
+## VS Code
 
-Sublime Text is a very popular editor with a free evaluation period. It's easy to install and use, and it's available for all operating systems.
+VS Code is a very popular and free to use editor. It's available for Windows, OS X and Linux.
 
-[Download it here](https://www.sublimetext.com/3)
-
-## Atom
-
-Atom is an extremely new code editor created by [GitHub](https://github.com/). It's free, open-source, easy to install and easy to use. It's available for Windows, OS X and Linux.
-
-[Download it here](https://atom.io/)
+[Download it here](https://code.visualstudio.com/)
 
 ## Why are we installing a code editor?
 
