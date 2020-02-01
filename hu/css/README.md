@@ -42,10 +42,11 @@ Django már tudja, hol találja a statikus fájlokat a beépíttett "admin" alka
 Ehhez pedig létre kell hozunk egy "`static`" nevű könyvtárat a blog applikáción belül:
 
     djangogirls
-     ├── blog
-     │ ├── migrations
-     │ └── static 
-     └── mysite
+    ├── blog
+    │   ├── migrations
+    │   ├── static
+    │   └── templates
+    └── mysite
     
 
 A Django automatikusan megtalál minden "static" nevű mappát az alkalmazásaid könyvtárain belül, és képes lesz használni azok tartalmát statikus fájlokként.
@@ -92,7 +93,7 @@ Olvass utána a [CSS szelektorokról a w3schools oldalán][4].
 Mindezek után közölnünk kell a HTML fájlunkkal is, hogy hozzáadtunk pár CSS-t. Nyisd meg a `blog/templates/blog/post_list.html` fájlt és add a következő sort a fájl legelejére:
 
 ```html
-{% load staticfiles %}
+{% load static %}
 ```    
 
 Itt csak betöltünk pár statikus fájlt :). Ezután a `<head>` és a `</head>` tagek közé, a Bootstrap CSS fájlok linkjei után (a böngésző olyan sorrendben olvassa az egyes fájlokat, amilyenben követik egymást, tehát a mi fájlunkban lévő kód lehet, hogy felülír pár kódot a Bootstrap fájlban), a következő sort add:
@@ -106,7 +107,7 @@ Most megmondtuk a template-ünknek, hol találja a CSS fájlokat.
 Így kellene kinéznie a fájlodnak:
 
 ```html
-{% load staticfiles %}
+{% load static %}
 <html>
     <head>
         <title>Django Girls blog</title>

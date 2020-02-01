@@ -12,9 +12,9 @@ Before we install Django we will get you to install an extremely useful tool to 
 
 So, let's create a **virtual environment** (also called a *virtualenv*). Virtualenv will isolate your Python/Django setup on a per-project basis. This means that any changes you make to one website won't affect any others you're also developing. Neat, right?
 
-All you need to do is find a directory in which you want to create the `virtualenv`; your home directory, for example. On Windows it might look like `C:\Users\Name\` (where `Name` is the name of your login).
+All you need to do is find a directory in which you want to create the `virtualenv`; your home directory, for example. On Windows, it might look like `C:\Users\Name\` (where `Name` is the name of your login).
 
-> __NOTE:__ On Windows, make sure that this directory does not contain accented or special characters; if your username contains accented characters, use a different directory, for example `C:\djangogirls`.
+> __NOTE:__ On Windows, make sure that this directory does not contain accented or special characters; if your username contains accented characters, use a different directory, for example, `C:\djangogirls`.
 
 For this tutorial we will be using a new directory `djangogirls` from your home directory:
 
@@ -26,24 +26,24 @@ $ cd djangogirls
 
 We will make a virtualenv called `myvenv`. See below for the instructions specific to your operating system.
 
-<!--sec data-title="Windows" data-id="virtualenv_installation_windows"
+<!--sec data-title="Virtual environment: Windows" data-id="virtualenv_installation_windows"
 data-collapse=true ces-->
 
-To create a new `virtualenv`, you need to open the console (we told you about that a few chapters ago – remember?) and run `C:\Python35\python -m venv myvenv`. It will look like this:
+To create a new `virtualenv`, you need to open the command prompt and run `python -m venv myvenv`. It will look like this:
 
 {% filename %}command-line{% endfilename %}
 ```
-C:\Users\Name\djangogirls> C:\Python35\python -m venv myvenv
+C:\Users\Name\djangogirls> python -m venv myvenv
 ```
 
-where `C:\Python35` is the directory in which you previously installed Python and `myvenv` is the name of your `virtualenv`. You can use any other name, but stick to lowercase and use no spaces, accents or special characters. It is also good idea to keep the name short – you'll be referencing it a lot!
+Where `myvenv` is the name of your `virtualenv`. You can use any other name, but stick to lowercase and use no spaces, accents or special characters. It is also good idea to keep the name short – you'll be referencing it a lot!
 
 <!--endsec-->
 
-<!--sec data-title="Linux and Mac" data-id="virtualenv_installation_linuxosx"
+<!--sec data-title="Virtual environment: Linux and OS X" data-id="virtualenv_installation_linuxosx"
 data-collapse=true ces-->
 
-Creating a `virtualenv` on both Linux and Mac is as simple as running `python3 -m venv myvenv`.
+We can create a `virtualenv` on both Linux and OS X by running `python3 -m venv myvenv`.
 It will look like this:
 
 {% filename %}command-line{% endfilename %}
@@ -51,21 +51,21 @@ It will look like this:
 $ python3 -m venv myvenv
 ```
 
-`myvenv` is the name of your `virtualenv`. You can use any other name, but stick to lowercase and use no spaces. It is also good idea to keep the name short as you'll be referencing it a lot!
+`myvenv` is the name of your `virtualenv`. You can use any other name, but stick to lowercase and use no spaces. It is also a good idea to keep the name short as you'll be referencing it a lot!
 
 > __NOTE:__ On some versions of Debian/Ubuntu you may receive the following error:
 
 >{% filename %}command-line{% endfilename %}
 >```
 >The virtual environment was not created successfully because ensurepip is not available.  On Debian/Ubuntu systems, you need to install the python3-venv package using the following command.
->    apt-get install python3-venv
+>    apt install python3-venv
 >You may need to use sudo with that command.  After installing the python3-venv package, recreate your virtual environment.
 >```
 >
 > In this case, follow the instructions above and install the `python3-venv` package:
 >{% filename %}command-line{% endfilename %}
 >```
->$ sudo apt-get install python3-venv
+>$ sudo apt install python3-venv
 >```
 
 > __NOTE:__ On some versions of Debian/Ubuntu initiating the virtual environment like this currently gives the following error:
@@ -79,8 +79,8 @@ $ python3 -m venv myvenv
 
 >{% filename %}command-line{% endfilename %}
 >```
->$ sudo apt-get install python-virtualenv
->$ virtualenv --python=python3.5 myvenv
+>$ sudo apt install python-virtualenv
+>$ virtualenv --python=python3.6 myvenv
 >```
 
 > __NOTE:__ If you get an error like
@@ -94,7 +94,7 @@ $ python3 -m venv myvenv
 >
 >{% filename %}command-line{% endfilename %}
 >```
->sudo apt install python3.5-venv
+>sudo apt install python3.6-venv
 >```
 
 <!--endsec-->
@@ -103,7 +103,7 @@ $ python3 -m venv myvenv
 
 The command above will create a directory called `myvenv` (or whatever name you chose) that contains our virtual environment (basically a bunch of directory and files).
 
-<!--sec data-title="Windows" data-id="virtualenv_windows"
+<!--sec data-title="Working with virtualenv: Windows" data-id="virtualenv_windows"
 data-collapse=true ces-->
 
 Start your virtual environment by running:
@@ -122,9 +122,18 @@ C:\Users\Name\djangogirls> myvenv\Scripts\activate
 >     The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose you to the security risks described in the about_Execution_Policies help topic at http://go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy? [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): A
 >```
 
+<!-- (This comment separates the two blockquote blocks, so that GitBook and Crowdin don't merge them into a single block.) -->
+
+> __NOTE:__ For users of the popular editor VS Code, which come with an integrated terminal based off windows powershell, if you wish to stick with the integrated terminal, you may run the following command to activate your virtual environment:
+>
+>```
+>$ . myvenv\Scripts\activate.ps1
+>```
+>The advantage is that you don't have to switch between editor windows and command-line windows
+
 <!--endsec-->
 
-<!--sec data-title="Linux and OS X" data-id="virtualenv_linuxosx"
+<!--sec data-title="Working with virtualenv: Linux and OS X" data-id="virtualenv_linuxosx"
 data-collapse=true ces-->
 
 Start your virtual environment by running:
@@ -151,7 +160,7 @@ When working within a virtual environment, `python` will automatically refer to 
 
 OK, we have all important dependencies in place. We can finally install Django!
 
-## Installing Django
+## Installing Django {#django}
 
 Now that you have your `virtualenv` started, you can install Django.
 
@@ -159,40 +168,61 @@ Before we do that, we should make sure we have the latest version of `pip`, the 
 
 {% filename %}command-line{% endfilename %}
 ```
-(myvenv) ~$ pip install --upgrade pip
+(myvenv) ~$ python -m pip install --upgrade pip
 ```
 
-Then run `pip install django~=1.10.0` (note that we use a tilde followed by an equal sign: `~=`) to install Django.
+### Installing packages with requirements
+
+A requirements file keeps a list of dependencies to be installed using
+`pip install`:
+
+First create a `requirements.txt` file inside of the `djangogirls/` folder, using the code editor that you installed earlier. You do this by opening a new file in the code editor and then saving it as `requirements.txt` in the `djangogirls/` folder. Your directory will look like this:
+
+```
+djangogirls
+├── myvenv
+│   └── ...
+└───requirements.txt
+```
+
+In your `djangogirls/requirements.txt` file you should add the following text:
+
+{% filename %}djangogirls/requirements.txt{% endfilename %}
+```
+Django~={{ book.django_version }}
+```
+
+Now, run `pip install -r requirements.txt` to install Django.
 
 {% filename %}command-line{% endfilename %}
 ```
-(myvenv) ~$ pip install django~=1.10.0
-Collecting django~=1.10.0
-  Downloading Django-1.10.4-py2.py3-none-any.whl (6.8MB)
-Installing collected packages: django
-Successfully installed django-1.10.4
+(myvenv) ~$ pip install -r requirements.txt
+Collecting Django~={{ book.django_version }} (from -r requirements.txt (line 1))
+  Downloading Django-{{ book.django_version }}-py3-none-any.whl (7.1MB)
+Installing collected packages: Django
+Successfully installed Django-{{ book.django_version }}
 ```
 
-<!--sec data-title="Windows" data-id="django_err_windows"
+<!--sec data-title="Installing Django: Windows" data-id="django_err_windows"
 data-collapse=true ces-->
 
 > If you get an error when calling pip on Windows platform, please check if your project pathname contains spaces, accents or special characters (for example, `C:\Users\User Name\djangogirls`). If it does, please consider using another place without spaces, accents or special characters (suggestion: `C:\djangogirls`). Create a new virtualenv in the new directory, then delete the old one and try the above command again. (Moving the virtualenv directory won't work since virtualenv uses absolute paths.)
 
 <!--endsec-->
 
-<!--sec data-title="Windows 8 and Windows 10" data-id="django_err_windows8and10"
+<!--sec data-title="Installing Django: Windows 8 and Windows 10" data-id="django_err_windows8and10"
 data-collapse=true ces-->
 
 > Your command line might freeze after when you try to install Django. If this happens, instead of the above command use:
 >
 >{% filename %}command-line{% endfilename %}
 >```
->C:\Users\Name\djangogirls> python -m pip install django~=1.10.0
+>C:\Users\Name\djangogirls> python -m pip install -r requirements.txt
 >```
 
 <!--endsec-->
 
-<!--sec data-title="Linux" data-id="django_err_linux"
+<!--sec data-title="Installing Django: Linux" data-id="django_err_linux"
 data-collapse=true ces-->
 
 > If you get an error when calling pip on Ubuntu 12.04 please run `python -m pip install -U --force-reinstall pip` to fix the pip installation in the virtualenv.

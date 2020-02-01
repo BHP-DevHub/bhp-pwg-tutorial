@@ -8,13 +8,13 @@ The Django Girls Tutorial is licensed under a [_Creative Commons Attribution-Sha
 
 # Editing basics
 
-The source code of the tutorial is [hosted on Github](https://github.com/DjangoGirls/tutorial). The Github [Fork & Pull workflow](https://help.github.com/articles/using-pull-requests) is used to accept and review changes.
+The source code of the tutorial is [hosted on GitHub](https://github.com/DjangoGirls/tutorial). The GitHub [Fork & Pull workflow](https://help.github.com/articles/using-pull-requests) is used to accept and review changes.
 
-The tutorial uses the [GitBook](https://www.gitbook.com/) service for publishing its documentation. [See more information about how Gitbook works](https://help.gitbook.com/).
+The tutorial uses the [GitBook](https://legacy.gitbook.com/) service for publishing its documentation. [See more information about how GitBook works](https://help.gitbook.com/).
 
 The tutorial is written in [Markdown mark up language](https://help.github.com/articles/markdown-basics).
 
-You can find any discussions about the contents of the tutorial on the [Github issue tracker](https://github.com/DjangoGirls/tutorial/issues).
+You can find any discussions about the contents of the tutorial on the [GitHub issue tracker](https://github.com/DjangoGirls/tutorial/issues).
 
 [Crowdin](https://crowdin.com/project/django-girls-tutorial) platform is used to manage translations. If you want to join an existing translation team or launch a new translation, send an email to the [translation managers](mailto:translations@djangogirls.org) or contact [support team](mailto:hello@djangogirls.org). If you want to propose some small changes or fix typos in existing translations, please create a Pull Request.
 
@@ -22,12 +22,12 @@ You can find any discussions about the contents of the tutorial on the [Github i
 
 For contributing to the tutorial the following is needed to get started:
 
-* a [Github account](https://github.com)
-* in the case of complex edits familiarity with [Git command line basics](https://help.github.com/articles/set-up-git) or familiarity with an app \([Windows](https://windows.github.com/), [Mac](https://mac.github.com/)\) to push your edits made on your computer to Github.
+* a [GitHub account](https://github.com)
+* in the case of complex edits familiarity with [Git command line basics](https://help.github.com/articles/set-up-git) or familiarity with an app ([Windows](https://windows.github.com/), [Mac](https://mac.github.com/)) to push your edits made on your computer to GitHub.
 
 ## Fork the repository
 
-First fork the [DjangoGirls/tutorial](https://github.com/DjangoGirls/tutorial) repository to your personal Github account:
+First fork the [DjangoGirls/tutorial](https://github.com/DjangoGirls/tutorial) repository to your personal GitHub account:
 
 ![Fork button](contributing/images/fork.png)
 
@@ -35,11 +35,11 @@ First fork the [DjangoGirls/tutorial](https://github.com/DjangoGirls/tutorial) r
 
 ## Simple changes
 
-For simple changes like typo corrections you can use the Github online editor:
+For simple changes like typo corrections you can use the GitHub online editor:
 
-* Open your local fork page on Github,
-* go to _README.md_ file in any chapter,
-* press the _Edit_ icon \(pen\)
+* Open your local fork page on GitHub,
+* go to *README.md* file in any chapter,
+* press the *Edit* icon (pen)
 
 and you can edit the chapter directly on github.com.
 
@@ -47,7 +47,7 @@ and you can edit the chapter directly on github.com.
 
 Markdown syntax is used to edit the individual pages of the tutorial.
 
-![Github editor](contributing/images/github_editor.png)
+![GitHub editor](contributing/images/github_editor.png)
 
 Save your changes and create a pull request as explained below.
 
@@ -55,7 +55,7 @@ Save your changes and create a pull request as explained below.
 
 For adding new chapters, writing longer snippets of text or adding images, you need to get a copy of the tutorial to your local computer.
 
-Either use the Github app for your operating system \(mentioned above\) or `git` command line to get the repository locally. You get the repository address from the front page of your own Github repository fork:
+Either use the GitHub app for your operating system (mentioned above) or `git` command line to get the repository locally. You get the repository address from the front page of your own GitHub repository fork:
 
 ```
 git clone git@github.com:yourgithubusername/tutorial.git
@@ -67,13 +67,13 @@ Then, create a branch for your new changes to sit in. It helps to call the branc
 git checkout -b contributing
 ```
 
-Download the [Gitbook Editor](https://www.gitbook.com/editor) app to your computer.
+Download the [GitBook Editor](https://legacy.gitbook.com/editor) app to your computer.
 
-Then you can open the tutorial in Gitbook Editor \(_File_ &gt; _Open book_\).
+Then you can open the tutorial in GitBook Editor (*File* > *Open book*).
 
-Make any changes in the tutorial using Gitbook and then save changes \(_Book_ &gt; _Save all_\).
+Make any changes in the tutorial using GitBook and then save changes (*Book* > *Save all*).
 
-Then commit the changes using `git` and push the changes to your remote Github repository.
+Then commit the changes using `git` and push the changes to your remote GitHub repository.
 
 Example:
 
@@ -102,21 +102,21 @@ To git@github.com:miohtama/tutorial.git
    b37ca59..fe36152  contributing -> contributing
 ```
 
-If you don't want to download the Gitbook Editor app you can also go to the [Gitbook website](https://www.gitbook.com/), sign up for free and work directly in your browser.
+If you don't want to download the GitBook Editor app you can also go to the [GitBook website](https://legacy.gitbook.com/), sign up for free and work directly in your browser.
 
 # Making a pull request
 
-After you have finished your changes you need to create [a pull request](https://help.github.com/articles/using-pull-requests)  on Github. DjangoGirls will get notified about the pull request, review your changes, suggest any corrections if needed and then _pull_ your changes to the master version.
+After you have finished your changes you need to create [a pull request](https://help.github.com/articles/using-pull-requests)  on GitHub. DjangoGirls will get notified about the pull request, review your changes, suggest any corrections if needed and then *pull* your changes to the master version.
 
-In your own repository on Github press do _Compare & pull request_
+In your own repository on GitHub press do *Compare & pull request*
 
-![Gitbook](contributing/images/pull_request.png)
+![Compare & pull request](contributing/images/pull_request.png)
 
 Fill in the information _why_ this change is being made. The reviewer can see the details of the actual change, so you don't need repeat the content of the change.
 
 Then press _Create pull request_.
 
-Github emails will notify you for the follow up process.
+GitHub emails will notify you for the follow up process.
 
 # Further information and help
 

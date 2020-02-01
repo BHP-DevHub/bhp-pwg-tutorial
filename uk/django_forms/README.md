@@ -52,7 +52,7 @@ class PostForm(forms.ModelForm):
 Після додавання відповідного рядка, ваш html файл має виглядати наступним чином:
 
 ```html
-{% load staticfiles %}
+{% load static %}
 <html>
     <head>
         <title>Django Girls blog</title>
@@ -330,7 +330,7 @@ form = PostForm(instance=post)
 
 Вітаємо! Ваш додаток стає все більш і більш повним!
 
-Якщо бажаєте дізнатись більше інформації про форми Django, ознайомтесь із документацією: https://docs.djangoproject.com/en/1.10/topics/forms/
+Якщо бажаєте дізнатись більше інформації про форми Django, ознайомтесь із документацією: https://docs.djangoproject.com/en/1.11/topics/forms/
 
 ## Безпека
 

@@ -60,7 +60,7 @@ Jó ötlet a `git status` parancs használata még a `git add` előtt, valamint 
     $ git status
     On branch master
     
-    Initial commit
+    No commits yet
     
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
@@ -175,17 +175,17 @@ Ugyanúgy, ahogy a saját gépeden csináltad, a PythonAnywhere-en is létrehozh
 ```
 $ cd my-first-blog
 
-$ virtualenv --python=python3.5 myvenv
-Running virtualenv with interpreter /usr/bin/python3.5
+$ virtualenv --python=python3.6 myvenv
+Running virtualenv with interpreter /usr/bin/python3.6
 [...]
 Installing setuptools, pip...done.
 
 $ source myvenv/bin/activate
 
-(myvenv) $  pip install django~=1.10.0
+(myvenv) $  pip install django~=1.11.0
 Collecting django
 [...]
-Successfully installed django-1.10.4
+Successfully installed django-1.11.3
 ```
 
 
@@ -205,7 +205,7 @@ Miután leokéztad a domainnevedet, válaszd a **manual configuration**-t (kézi
 
 ### Adatbázis létrehozása PythonAnywhere-en
 
-Van még valami, ami máshogy működik a saját gépeden és a szerveren: különböző szervert használnak. Így a felhasználói fiókok és a blogposztok különbözőek lehetnek a szerveren és a gépeden.
+Van még valami, ami máshogy működik a saját gépeden és a szerveren: különböző adatbázist használnak. Így a felhasználói fiókok és a blogposztok különbözőek lehetnek a szerveren és a gépeden.
 
 A szerveren ugyanúgy tudod létrehozni az adatbázist, mint a saját gépeden, a `migrate` és `createsuperuser` parancsokkal:
 

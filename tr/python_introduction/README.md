@@ -1,101 +1,131 @@
-# Python'a Giriş
+{% set warning_icon = '<span class="glyphicon glyphicon-exclamation-sign" style="color: red;" aria-hidden="true" data-toggle="tooltip" title="An error is expected when you run this command!" ></span>' %}
 
-> Bu bölümün bazı kısımları Geek Girls Carrots (http://django.carrots.pl/) öğreticisinden alınmıştır.
+# Python'a giriş
+
+> Bu bölümün bir kısmı Geek Girls Carrots tarafından hazırlanmış eğitimlere dayanılarak hazırlanmıştır (https://github.com/ggcarrots/django-carrots).
 
 Biraz kod yazalım!
 
 ## Python komut istemi (prompt)
 
-Python'la oynamaya başlamadan önce bilgisayarımızda bir *komut satırı* açmamız gerekiyor. Bunu nasıl yapacağınızı artık biliyorsunuz, [Komut satırına giriş][1] bölümünde öğrenmiştiniz.
+> Evdeki okuyucular için: Bu kısım [Python Temelleri: Tamsayılar, Dizeler, Listeler, Değişkenler ve Hatalar](https://www.youtube.com/watch?v=MO63L4s-20U) videosunda bulunabilir.
 
- [1]: ../intro_to_command_line/README.md
+Python'la oynamaya başlamadan önce bilgisayarımızda bir *komut satırı* açmamız gerekiyor. Bunu zaten nasıl yapacağınızı artık biliyorsunuz, [Komut satırına giriş](../intro_to_command_line/README.md) bölümünde öğrenmiştiniz.
 
 Hazır olduğunuzda, aşağıdaki talimatları takip edin.
 
 Bir Python konsolu açmak istiyoruz; öyleyse Windows'ta `python`, Mac OS/Linux'ta `python3` yazıp, `enter`'a basın.
 
-```
-$ python3
-Python 3.4.3 (...)
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```    
+{% filename %}komut satırı{% endfilename %}
+
+    $ python3
+    Python 3.6.1 (...)
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>>
+    
 
 ## İlk Python komutunuz!
 
-Python komutunu çalıştırdıktan sonra, komut istemi `>>>` şeklinde değişti. Bizim için bu, şimdi yalnızca Python dilinde komutlar kullanabileceğimiz anlamına geliyor. `>>>` yazmanıza gerek yok, Python sizin için bunu yapıyor.
+Python komutunu çalıştırdıktan sonra, komut istemi `>>>` şeklinde değişti. Bizim için bu, şimdi yalnızca Python dilinde komutlar kullanabileceğimiz anlamına geliyor. `>>>` yazmanıza gerek yok - Python bunu sizin için yapacak.
 
 Eğer herhangi bir zamanda Python komut satırından çıkmak isterseniz, yalnızca `exit()` yazmanız ya da Windows için `Ctrl + Z`, Mac/Linux için `Ctrl + D` kısa yolunu kullanmanız yeterli. Bunu yaptığınız taktirde artık `>>>` yazısını görmeyeceksiniz.
 
-Şu an için Python komut satırından çıkmak istemiyoruz. Bu konuda daha fazlasını öğrenmek istiyoruz. Gerçekten basit bir şeyle başlayalım. Örneğin, biraz matematik yapmayı deneyip `2 + 3` gibi bir şey yazın ve `enter`'a basın.
+Şimdilik, Python konsolundan çıkmak istemiyoruz. Bu konuda daha fazla bilgi edinmek istiyoruz. Biraz matematik yazarak başlayalım (` 2 + 3 ` gibi) ve `enter` 'a basalım.
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> 2 + 3
 5
-```    
+```
 
-Harika! Cevabın komut satırına geldiğini gördün değil mi? Python matematik biliyor! Şu gibi komutları da deneyebilirsiniz: - `4 * 5` - `5 - 1` - `40 / 2`
+Güzel! Cevap nasıl da çıktı görüyor musun? Python matematik biliyor! Sen de diğer komutları şöyle deneyebilirsin:
 
-Bunları biraz kurcalayıp eğlen, sonra tekrar burada buluşalım :).
+- `4 * 5`
+- `5 - 1`
+- `40 / 2`
 
-Gördüğün üzere Python çok iyi bir hesap makinesi. Eğer başka neler yapabileceğini merak ediyorsan...
+Üstel hesaplama yapmak için 2 üzeri 3 deyin, şöyle yazalım: {% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> 2 ** 3
+8
+```
+
+Bunları biraz kurcalayıp eğlen, sonra tekrar burada buluşalım. :)
+
+Gördüğün gibi Python çok iyi bir hesap makinesi. Eğer başka neler yapabileceğini merak ediyorsan...
 
 ## String'ler (dizeler)
 
 Mesela ismin? İsmini tırnak işaretleri içerisinde şu şekilde yaz:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> "Zeynep"
 'Zeynep'
-``` 
+```
 
-İlk string'ini oluşturdun! String (katar), bilgisayar tarafından işlenebilen ve karakterlerden oluşan dizilerin genel adıdır. Bir string her zaman aynı özel karakterle başlamalı ve aynı özel karakterle bitmelidir. Tek tırnak (`'`) veya çift tırnak (`"`) olabilir (aralarında herhangi bir fark yok!). Tırnak işaretleri Python'da içlerinde olan şeyin bir string olduğunu ifade eder.
+İlk string'ini oluşturdun! String (dize), bilgisayar tarafından işlenebilen ve karakterlerden oluşan dizilerin genel adıdır. Bir string her zaman aynı özel karakterle başlamalı ve aynı özel karakterle bitmelidir. Tek tırnak (`'`) veya çift tırnak (`"`) olabilir (aralarında herhangi bir fark yok!). Tırnak işaretleri Python'da içlerinde olan şeyin bir string olduğunu ifade eder.
 
 Stringler birbirlerine eklenebilir. Şunu dene:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> "Merhaba " + "Zeynep"
 'Merhaba Zeynep'
-```    
+```
 
 Ayrıca stringleri bir sayı ile çarpabilirsin:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> "Zeynep" * 3
 'ZeynepZeynepZeynep'
-```    
+```
 
 Eğer stringinin içerisine bir tırnak işareti koymak istiyorsan, bunun için iki seçeneğin var.
 
 Çift tırnak kullanarak:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> "Turgut Uyar'ın dizeleriyiz"
 "Turgut Uyar'ın dizeleriyiz"
-```    
-
-veya sola eğik çizgi (` \ `) kullanarak:
-
 ```
+
+veya backslash (` \ `) kullanarak:
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> 'Turgut Uyar\'ın dizeleriyiz'
 "Turgut Uyar'ın dizeleriyiz"
-```    
+```
 
 Hoş değil mi? İsminin tamamını büyük harf yapmak için, sadece şunu yazman yeterli:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> "Zeynep".upper()
 'ZEYNEP'
-```    
-
-Stringin üzerinde `upper` **fonksiyon**unu kullandın! Bir fonksiyon (`upper()` gibi) , çağırıldığında(calling) Python'un bir obje (`"Zeynep"`) üzerinde gerçekleştirmesi gereken bir dizi işleme denilir.
-
-Eğer ismindeki harflerin sayısını öğrenmek istiyorsan bunun için de bir fonksiyon var!
-
 ```
+
+String'in üzerinde `upper` **fonksiyon**unu kullandın! Bir fonksiyon (`upper()` gibi), çağırıldığında (calling) Python'un girdi olarak verilen bir obje (`"Zeynep"`) üzerinde gerçekleştirmesi gereken bir dizi işleme denilir.
+
+Eğer ismindeki harflerin sayısını öğrenmek istiyorsan bunun için de bir **fonksiyon** var!
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> len("Zeynep")
 6
-```    
+```
 
 Fonksiyonları neden bazen stringin sonunda bir `.` ile (`"Zeynep".upper()` gibi) ve bazen de önce fonksiyonu çağırıp sonra parantez içerisine stringi yazarak kullandığımızı merak ediyor musun? Pekala, bazı durumlarda, fonksiyonlar bir takım nesnelere aittirler, mesela `upper()`, yalnızca stringler üzerinde kullanılabilir. Böyle durumlarda, bu tarz fonksiyonlara biz **method** ismini veriyoruz. Diğer durumlarda, bir fonksiyon özel olarak bir nesneye ait olmayıp, farklı çeşitlerde nesneler üzerinde de kullanılabilir, aynı `len()` gibi. İşte bu nedenle `"Zeynep"` stringini `len` fonksiyonuna bir parametre olarak veriyoruz.
 
@@ -103,92 +133,110 @@ Fonksiyonları neden bazen stringin sonunda bir `.` ile (`"Zeynep".upper()` gibi
 
 Tamam, stringlerden yeterince bahsettik. Şu ana kadar şu konuları öğrendin:
 
-*   **konsol-komut istemcisi** - Python komut satırına komut(kod) yazdığında Python cevap veriyor
-*   **sayılar ve strings(karakter dizinleri)** - Python'da sayılar matematik ve stringler metin nesneleri için kullanılıyor
-*   **operators(işleçler)** + ve * gibi, değerleri birleştirerek yeni bir değer oluştuyor
-*   **fonksiyonlar-işlevler** - upper() ve len() gibi, nesneler üzerinde eylemler gerçekleştiriyor.
+- **komut istemi** – komutları (kod) Python'un komut istemine yazdığınızda Python'da sonuçlandırarak yanıtlar üretir
+- **sayılar ve dizeler** – Python'da sayılar matematik için dizeler ise metin nesneleri için kullanılmaktadır
+- **operatörler** `+` ve `*` gibi, değerleri birleştirerek yeni bir değer üretmek için kullanılmaktadır
+- **fonksiyonlar** `upper()` ve `len()` gibi, nesneler üzerinde eylemler gerçekleştirmektedirler.
 
 Bunlar öğreneceğiniz her programlama dilinin temelleri. Biraz daha zor bir şey için hazır mısın? İddiaya gireriz öylesin!
 
 ## Hatalar
 
-Şimdi yeni bir şey deneyelim. Bir sayının uzunluğunu, bir string'in uzunluğunu bulduğumuz gibi bulabilir miyiz? Bunu görmek için `len(304023)` yazıp `enter`a basalım:
+Şimdi yeni bir şey deneyelim. Bir sayının uzunluğunu, bir string'in uzunluğunu bulduğumuz gibi bulabilir miyiz? Bunu görmek için `len(304023)` yazıp `enter` a basalım:
 
-```
+{% filename %}{{ warning_icon }} komut satırı{% endfilename %}
+
+```python
 >>> len(304023)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: object of type 'int' has no len()
-``` 
-
-İlk hatamızı aldık! Nesne türü "int" (tam sayılar, tüm sayılar) in uzunluğu olmadığını söylüyor. Şimdi ne yapabiliriz? Belki de rakamı bir string olarak yazabiliriz? Stringlerin bir uzunluğu var, değil mi?
-
 ```
+
+İlk hatamızı aldık! {{ warning_icon }} ikonu çalıştırmak üzere olduğunuz programın beklediğiniz gibi çalışmayacağı konusunda sizi ikaz eder. Hatalar yapmak (kasıtlı olanlar bile) öğrenmenin önemli bir kısmı!
+
+Nesne türü "int" (tam sayılar, tüm sayılar) in uzunluğu olmadığını söylüyor. Şimdi ne yapabiliriz? Belki de rakamı bir string olarak yazabiliriz? Stringlerin bir uzunluğu var, değil mi?
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> len(str(304023))
 6
-```    
+```
 
 İşe yaradı! `str` fonksiyonunu `len` fonksiyonunun içinde kullandık. `str` her şeyi string'e çeviriyor.
 
-*   `str` fonksiyonu, değişkenleri **stringe** çeviriyor
-*   `int` fonksiyonu değişkenleri **integera** çeviriyor
+- `str` fonksiyonu, değişkenleri **stringe** çeviriyor
+- `int` fonksiyonu değişkenleri **integera** çeviriyor
 
-> Önemli: Tamsayıları yazıya çevirebiliriz, fakat yazıları(text) sayılara çeviremeyiz - `int('selamlar')` bir anlam ifade etmiyor.
+> Önemli: Sayıları metin durumuna getirebiliriz ama metni sayılar durumuna tam olarak getiremeyebiliriz - yine de `int('hello')` olsa ne olurdu?
 
 ## Değişkenler
 
-Programlamada en önemli konulardan biri değişkenlerdir. Değişken, daha sonra kullanmak istediğiniz bir yapıya verdiğiniz isimdir. Programcılar değişkenleri verileri tutmak ya da kodlarını daha okunabilir ve anlaşılabilir kılmak için kullanırlar ve böylece her şeyi sürekli akıllarında tutmaya gerek kalmaz.
+Programlamada en önemli konulardan biri değişkenlerdir. Değişken (variable), daha sonra kullanmak istediğiniz bir yapıya verdiğiniz isimdir. Programcılar değişkenleri verileri tutmak ya da kodlarını daha okunabilir ve anlaşılabilir kılmak için kullanırlar ve böylece her şeyi sürekli akıllarında tutmaya gerek kalmaz.
 
 `name` adında bir değişken yaratmak istediğimizi varsayalım:
 
-```
->>> name = "Ayşe"
-```    
+{% filename %}komut satırı{% endfilename %}
 
-Gördünüz mü? Ne kadar kolay: name değişkeni "Ayşe" oldu.
+```python
+>>> name = "Ayşe"
+```
+
+name (isim) eşittir "Ayşe" yazalım.
 
 Farkettiğiniz gibi, program daha öncekilerinin aksine bu kez hiçbir cevap vermedi. O zaman böyle bir değişkenin gerçekten tanımlı olduğunu nasıl bilebiliriz? Basitçe, `name` yazıp `enter` tuşuna basalım:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> name
 'Ayşe'
-```    
-
-İşte bu sizin ilk değişkeniniz! name değişkeninin işaret ettiği şeyi her zaman değiştirebilirsiniz:
-
 ```
+
+Yaşasın! İşte bu senin ilk değişkenin! :) Bu değişkenin işaret ettiği şeyi her zaman değiştirebilirsin:
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> name = "Suzan"
 >>> name
 'Suzan'
-```    
+```
 
-Bu değişkeni fonksiyonlar içinde de kullanabilirsiniz:
+Bu değişkeni fonksiyonlar içinde de kullanabilirsin:
 
-```  
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> len(name)
 5
-```    
-
-Harika değil mi? Tabii ki değişkenler, sayılar da dahil herhangi bir şey olabilir. Şunu deneyin: 
-
 ```
+
+Harika değil mi? Tabii ki değişkenler, sayılar da dahil herhangi bir şey olabilir. Şunu deneyin:
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> a = 4
 >>> b = 6
 >>> a * b
 24
-```    
-
-Peki ya değişkenin adını yanlış kullanırsak? Ne olacağını tahmin ediyor musunuz? Deneyelim! 
-
 ```
+
+Peki ya değişkenin adını yanlış kullanırsak? Ne olacağını tahmin ediyor musun? Deneyelim!
+
+{% filename %}{{ warning_icon }} komut satırı{% endfilename %}
+
+```python
 >>> city = "Tokyo"
 >>> ctiy
 Traceback (most recent call last):
-   File "<stdin>", line 1, in <module>
+  File "<stdin>", line 1, in <module>
 NameError: name 'ctiy' is not defined
-```   
+```
 
-Bir hata! Gördüğünüz gibi, Python bir çok çeşit hata çeşidine sahip ve bu hatanın adı **NameError**, yani İsimlendirme Hatası. Tanımlamadığınız bir değişkenin adını kullanmaya çalışırsanız, Python size bu hatayı verir. Eğer bu hata ile daha sonra karşılaşırsanız, kodunuzdaki değişkenlerin adını doğru yazıp yazmadığınızı kontrol edin.
+Bir hata! Gördüğünüz gibi, Python birçok hata çeşidine sahip ve bu hatanın adı **NameError**, yani İsimlendirme Hatası. Tanımlamadığınız bir değişkenin adını kullanmaya çalışırsanız, Python size bu hatayı verir. Eğer bu hata ile daha sonra karşılaşırsanız, kodunuzdaki değişkenlerin adını doğru yazıp yazmadığınızı kontrol edin.
 
 Bununla biraz oynayıp, neler yapabildiğinizi görün!
 
@@ -196,7 +244,9 @@ Bununla biraz oynayıp, neler yapabildiğinizi görün!
 
 Şunu deneyin:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> name = 'Merve'
 >>> name
 'Merve'
@@ -210,81 +260,100 @@ Daha ileride göreceğimiz gibi `print()`, işlevlerin içindeyken bir şey yazd
 
 ## Listeler
 
-Python, string ve integerın yanı sıra, çok değişik türlerde nesnelere sahiptir. Şimdi, **liste** türünü tanıtacağız. Listeler tam da düşündüğünüz gibidir: diğer nesnelerin listesi olan nesne :)
+Python, string (dize) ve integerın (tam sayı) yanı sıra, çok değişik türlerde nesnelere sahiptir. Şimdi, **liste** türünü tanıtacağız. Listeler tam da düşündüğünüz gibidir: diğer nesnelerin listesi olan nesne. :)
 
 Yeni bir liste yaratmakla devam edelim:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> []
 []
-```    
+```
 
 Evet, liste boş. Çok kullanışlı sayılmaz, değil mi? Hadi loto numaralarıyla liste oluşturalım. Sürekli kendimizi tekrar etmek istemeyiz, o yüzden listeyi değişkene atayalım:
 
-```  
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> lottery = [3, 42, 12, 19, 30, 59]
-```    
+```
 
 Pekala, listeyi oluşturduk! Onunla ne yapabiliriz? Hadi listede kaç tane loto numarası olduğunu görelim. Hangi fonksiyonu kullanman gerektiği hakkında bir fikrin var mı? Zaten bildiğin bir fonksiyon!
 
-```  
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> len(lottery)
 6
 ```
 
 Evet! `len()` listedeki nesne sayısını verir. Kullanışlı, değil mi? Belki de şu an listeyi sıralarız:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> lottery.sort()
-```    
+```
 
 Bu hiçbir cevap vermez, sadece listedeki numaraların sırasını değiştirir. Şimdi listeyi yazdıralım ve ne olduğunu görelim:
 
-```  
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> print(lottery)
 [3, 12, 19, 30, 42, 59]
-```    
+```
 
 Gördüğünüz gibi, listedeki sayılar artık küçükten büyüğe sıralı. Tebrikler!
 
 Belki de sıralamayı ters çevirmek isteriz? Hadi yapalım!
 
-```
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> lottery.reverse()
 >>> print(lottery)
 [59, 42, 30, 19, 12, 3]
-```    
-
-Kolay, değil mi? Listeye yeni bir eleman eklemek isterseniz, bu komutu yazarak yapabilirsiniz:
-
 ```
+
+Kolay, değil mi? Listeye yeni bir eleman eklemek isterseniz, şu komutu yazarak yapabilirsiniz:
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> lottery.append(199)
 >>> print(lottery)
 [59, 42, 30, 19, 12, 3, 199]
-```    
+```
 
 Sadece listedeki ilk elemanı göstermek isterseniz, **indexes** (indeksler) ile yapabilirsiniz. İndeks elemanın listede nerede olduğunu belirten numaradır. Programcılar sıfırdan başlamayı tercih ederler, bu yüzden listedeki ilk eleman listenin 0. indeksindedir, sonraki 1. indeksindedir ve böyle devam eder. Şunu deneyin:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> print(lottery[0])
 59
 >>> print(lottery[1])
 42
-```    
+```
 
-Gördüğünüz gibi, Listedeki nesnelere listenin ismi ve köşeli parantez içindeki nesnenin indeksini kullanarak ulaşabilirsin.
+Gördüğünüz gibi, listedeki nesnelere listenin ismi ve köşeli parantez içindeki nesnenin indeksini kullanarak ulaşabilirsin.
 
-Listeden eleman silmek için yukarıda öğrendiğimiz gibi **indeksleri** ve **del** komutunu kullanman gerekir (del silmenin(delete) kısaltmasıdır). Bir örnekle öğrendiklerimizi pekiştirelim; listeden ilk numarayı sileceğiz.
+Listenizden bir şeyler silmek için, yukarıda öğrendiğimiz gibi **indeksleri** ve `pop()` metodunu kullanmamız gerekecektir. Bir örnekle öğrendiklerimizi pekiştirelim; listeden ilk numarayı sileceğiz.
 
-```  
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> print(lottery)
 [59, 42, 30, 19, 12, 3, 199]
 >>> print(lottery[0])
 59
->>> del lottery[0]
+>>> lottery.pop(0)
+59
 >>> print(lottery)
 [42, 30, 19, 12, 3, 199]
-```    
+```
 
 Kusursuz çalıştı!
 
@@ -294,85 +363,102 @@ Bütün liste fonksiyonlarını Python dökümantasyonunun bu bölümünde bulab
 
 ## Sözlükler (Dictionaries)
 
+> Evdeki okuyucular için: Bu kısım [Python Temelleri: Sözlükler](https://www.youtube.com/watch?v=ZX1CVvZLE6c) videosunda işlenmiştir.
+
 Sözlük listeye benzerdir ancak sözlük değerlerine indeks yerine anahtar ile ulaşılır. Anahtar metin veya numara olabilir. Boş bir sözlük oluşturmak için kullanılan söz dizimi şudur:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> {}
 {}
-```    
+```
 
 Bu boş bir sözlük oluşturduğunuzu gösterir. Yaşasın!
 
-Şimdi, bu komutu yazmayı deneyin (kendi bilgilerinle değiştir):
+Şimdi, bu komutu yazmayı deneyin (kendi bilgilerinizle değiştirmeyi deneyin):
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> participant = {'name': 'Ayşe', 'country': 'Türkiye', 'favorite_numbers': [7, 42, 92]}
-```    
+```
 
-Bu komut ile üç anahtar-değer çiftine sahip `participant` isminde bir değişken oluşturdun:
+Bu komutla, üç anahtar-değer çifti ile `participant` (katılımcı) isminde bir değişken oluşturdunuz:
 
-*   Anahtar `name` `'Ayşe'` (`string` nesnesi) değerine işaret eder,
-*   `country` `Türkiye` (bir diğer `string`) değerine,),
-*   ve `favorite_numbers` `[7, 42, 92]` (3 numaralı bir `list`) değerine işaret eder.
+- Anahtar `name` `'Ayşe'` (`string` nesnesi) değerine işaret eder,
+- `country` `Türkiye` (bir diğer `string`) değerine),
+- ve `favorite_numbers` `[7, 42, 92]` (3 numaralı bir `list`) değerine işaret eder.
 
 Bu söz dizimi ile tek bir anahtarın içeriğini kontrol edebilirsin:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> print(participant['name'])
 Ayşe
-``` 
+```
 
-Gördün mü, listeye benzer. Ancak indeksini hatırlamana gerek yok - sadece ismi.
+Gördünüz mü, bu listeye benzer. Fakat indeksi hatırlamanıza gerek yok - sadece ismini hatırlayın.
 
 Python'a olmayan bir anahtarın değerini sorarsak ne olur? Tahmin edebiliyor musun? Hadi deneyip görelim!
 
-```  
+{% filename %}{{ warning_icon }} komut satırı{% endfilename %}
+
+```python
 >>> participant['age']
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 KeyError: 'age'
-```    
+```
 
 Bir başka hata! **KeyError** hatası. Python yardımseverdir ve sana `'age'` anahtarının sözlükte bulunmadığını söyler.
 
-Ne zaman sözlük veya liste kullanmalısın? Düşünmek için güzel bir nokta. Sonraki satırdaki cevaba bakmadan önce kafanızda bir çözüm oluşturun.
+Ne zaman sözlük veya liste kullanmalısın? Düşünmek için güzel bir nokta. Sonraki satıra bakmadan önce cevap üzerinde bir düşünün.
 
-*   Sıralı elemanlara mı ihtiyacın var? Liste ile devam et.
-*   İleride hızlıca (anahtarlar ile) değerlere ulaşmak istediğin için anahtarlar ile ilişkilendirilmiş değerlere mi ihtiyacın var? Sözlük kullan.
+- Sıralı elemanlara mı ihtiyacın var? Liste ile devam et.
+- İleride hızlıca (anahtarlar ile) değerlere ulaşmak istediğin için anahtarlar ile ilişkilendirilmiş değerlere mi ihtiyacın var? Sözlük kullan.
 
 Sözlükler de listeler gibi değişebilirdir (*mutable*), yani oluşturulduktan sonra değiştirilebilirler. Oluşturulduktan sonra sözlüklere anahtar/değer çifti ekleyebilirsiniz, aşağıdaki gibi:
 
-```
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> participant['favorite_language'] = 'Python'
-```    
+```
 
 Listeler gibi, `len()` metodu sözlükteki anahtar-değer çiftlerinin sayısını bize verir. Devam edip şu komutu yazın:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> len(participant)
 4
 ```
-    
 
 Umarım şu ana kadar mantıklı gelmiştir :) Sözlüklerle biraz daha eğlenceye hazır mısın? İlginç şeyler için sonraki satıra atla.
 
-`del` komutunu sözlükten eleman silmek için kullanabilirsin. Mesela, `'favorite_numbers'` anahtarına karşılık gelen elemanı silmek istersen, sadece şu komutu yaz:
+Sözlükten bir maddeyi silmek için `pop()` metodunu kullanabilirsin. Mesela, `'favorite_numbers'` anahtarına karşılık gelen elemanı silmek istersen, şu komutu yaz:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> del participant['favorite_numbers']
 >>> participant
 {'country': 'Türkiye', 'favorite_language': 'Python', 'name': 'Ayşe'}
-```    
+```
 
 Çıktıdan görebildiğin gibi, 'favorite_numbers' anahtarına karşılık gelen anahtar-değer çifti silindi.
 
 Bunun yanı sıra, sözlükteki daha önce oluşturulmuş anahtarın değerini değiştirebilirsiniz. Şunu yazın:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> participant['country'] = 'Almanya'
 >>> participant
 {'country': 'Almanya', 'favorite_language': 'Python', 'name': 'Ayşe'}
-```    
+```
 
 Gördüğün gibi, `'country'` anahtarının değeri `'Türkiye'`den `'Almanya`'ya çevrildi. :) Heyecan verici değil mi? Yaşasın! Bir başka harika şey öğrendin.
 
@@ -380,18 +466,22 @@ Gördüğün gibi, `'country'` anahtarının değeri `'Türkiye'`den `'Almanya`'
 
 Harika! Şu an programlama hakkında birçok şey biliyorsun. Bu kısımda, şunları öğrendin:
 
-*   **hatalar** - eğer Python yazdığın komutu anlamazsa çıkan hataları nasıl okuyacağını ve anlayacağını artık biliyorsun
-*   **değişkenler** - daha kolay kod yazmanı sağlayan ve kodunu daha okunabilir yapan nesnelerin isimleri
-*   **listeler** - belirli bir sırada tutulan nesnelerin listesi
-*   **sözlükler** - anahtar-değer çifti olarak tutulan nesneler
+- **errors** - eğer Python yazdığın komutu anlamazsa çıkan hataları nasıl okuyacağını ve anlayacağını artık biliyorsun
+- **değişkenler** - daha kolay kod yazmanı sağlayan ve kodunu daha okunabilir yapan nesnelerin isimleri
+- **listeler** - belirli bir sırada tutulan nesnelerin listesi
+- **sözlükler** - anahtar-değer çifti olarak tutulan nesneler
 
-Bir sonraki part için heyecanlı mısınız? :)
+Bir sonraki bölüm için heyecanlı mısınız? :)
 
 ## Karşılaştırma
 
-Programlamanın önemli bir bölümü bir şeyleri karşılaştırmayı içerir. Karşılaştırılabilecek en kolay şey nedir? Tabii ki sayılar. Nasıl çalıştığını görelim (True = "Doğru", False= "Yanlış" demek).
+> Evden okuyanlar için: Bu kısım [Python Basics: Comparisons](https://www.youtube.com/watch?v=7bzxqIKYgf4) videosunda anlatılıyor.
 
-```
+Programlamanın büyük kısmı karşılaştırma içerir. Karşılaştırması en kolay olan şey nedir? Tabi ki sayılar. Bakalım nasıl çalışıyor:
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> 5 > 2
 True
 >>> 3 < 1
@@ -406,62 +496,73 @@ True
 
 Python'a birkaç sayı karşılaştırmasını söyledik. Gördüğünüz gibi, sadece sayıları karşılaştırmakla kalmadı, aynı zamanda metodların sonuçlarını da karşılaştırdı. Güzel değil mi?
 
-İki sayının eşit olup olmadığını öğrenmek için neden iki tane eşittir işraretini `==` yan yana koyduk? Değişkenlere içerik verirken, tek `=` işaretini kullanıyoruz. İki sayının birbirine eşit olup olmadığını görmek için **her zaman** `==` işaretini kullanmak gerekiyor. Sayıların birbirine eşit olmaması durumunu da kontrol edebiliriz. Bunun için, yukarıdaki örnekteki gibi `!=` sembolünü kullanıyoruz. 
+İki sayının eşit olup olmadığını öğrenmek için neden iki tane eşittir işraretini `==` yan yana koyduk? Değişkenlere içerik verirken, tek `=` işaretini kullanıyoruz. Her zaman ama **her zaman** ikisini birden koyman gerekir – `==` – eğer birbirlerine eşit olup olmadıklarını kontrol etmek isterseniz. Sayıların birbirine eşit olmaması durumunu da kontrol edebiliriz. Bunun için, yukarıdaki örnekteki gibi `!=` sembolünü kullanıyoruz. 
 
 Python' a iki görev daha verin:
 
-```
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> 6 >= 12 / 2
 True
 >>> 3 <= 2
 False
-```    
-
-`>` ve `<` işaretleri kolay, fakat `>=` ve `<=` ne anlama geliyor?
-
-*   x `>` y : x büyüktür y
-*   x `<` y : x küçüktür y
-*   x `<=` y : x küçük eşittir y
-*   x `>=` y : x büyük eşittir y
-
-Harika! Biraz daha ister misiniz? Şunu deneyin: 
-
 ```
+
+`>`‘ı ve `<`‘ı gördük, ama `>=` ve `<=` ne anlama geliyor? Onları böyle okuyabilirsin:
+
+- x `>` y : x büyüktür y
+- x `<` y : x küçüktür y
+- x `<=` y : x küçük eşittir y
+- x `>=` y : x büyük eşittir y
+
+Harika! Birkaç denemeye daha ne dersiniz? Şunu deneyin:
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> 6 > 2 and 2 < 3
 True
 >>> 3 > 2 and 2 < 1
 False
 >>> 3 > 2 or 2 < 1
 True
-```    
+```
 
 Python'a istediğiniz kadar sayıyı karşılaştırmak için verebilirsiniz, ve size hepsinin cevabını verecek. Çok akıllı değil mi?
 
-*   **and** - Mantıkta kullandığımız "ve" anlamına geliyor, yani iki taraf da True, yani doğruysa, cevap da True olacak
-*   **or** - Bu da "veya" anlamına geliyor, karşılaştırılan iki taraftan tek bir tanesi bile True ise bize True cevabını verecek
+- **and** - Mantıkta kullandığımız "ve" anlamına geliyor, yani iki taraf da True, yani doğruysa, cevap da True olacak
+- **or** - Bu da "veya" anlamına geliyor, karşılaştırılan iki taraftan tek bir tanesi bile True ise bize True cevabını verecek
 
 Portakallarla elmaları karşılaştılaştırabilir miyiz? Bunun Python'daki eşdeğerini deneyelim: 
 
-```
->>> 1 > 'django'
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: unorderable types: int() > str()
-```    
+{% filename %}{{ warning_icon }} komut satırı{% endfilename %}
 
-Gördüğünüz gibi Python tam sayılar(`int`) ve kelimeleri(yani stringleri, `str`) karşılaştıramıyor. Onun yerine, **TypeError** göstererek iki farklı tipteki değişkenin karşılaştırılamayacağını söylüyor. 
+```python
+>>> 1 > 'django'
+Geri görüş (en son çağrı):
+  Dosya "<stdin>", satır 1, <module>‘in içinde
+HataTürü: ‘>’ 'int' ve 'str' örnekleri arasında desteklenmiyor
+```
+
+Gördüğünüz gibi Python tam sayılar(`int`) ve kelimeleri(yani stringleri, `str`) karşılaştıramıyor. Onun yerine, **TypeError** göstererek iki farklı tipteki değişkenin karşılaştırılamayacağını söylüyor.
 
 ## Boolean (Mantıksal)
 
-Laf arasında, yeni bir Python nesne tipi öğrendiniz. Adı **boolean** olan bu tip çok kolay. 
+Bu arada, python'da yeni bir nesne türü öğrendin. Buna **Boolean** denir.
 
-Sadece iki tane boolean nesnesi var: - True (Doğru) - False (Yanlış)
+Yalnızca iki Boolean nesnesi vardır:
 
-Python'un bunu anlaması için her zaman "True" (ilk harf büyük, geri kalanları küçük) yazmanız gerekiyor. **true, TRUE, tRUE işe yaramaz -- sadece True doğru.** (Aynısı "False" için de geçerli.) 
+- True
+- False
 
-Boolean'lar değişken de olabiliyor! Bakınız: 
+Python'un bunu anlaması için her zaman "True" (ilk harf büyük, geri kalanları küçük) yazmanız gerekiyor. **true, TRUE, tRUE işe yaramaz -- sadece True doğru.** (Aynısı "False" için de geçerli.)
 
-```
+Boolean'lar değişken de olabiliyor! Bakınız:
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> a = True
 >>> a
 True
@@ -469,140 +570,198 @@ True
 
 Ayrıca bu şekilde de yapabilirsiniz:
 
-```  
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> a = 2 > 5
 >>> a
 False
-```    
+```
 
 Boolean'lar ile aşağıdaki komutları deneyerek biraz oynayın:
 
-*   `True and True`
-*   `False and True`
-*   `True or 1 == 1`
-*   `1 != 2`
+- `True and True`
+- `False and True`
+- `True or 1 == 1`
+- `1 != 2`
 
-Tebrikler! Boolean'lar programlamadaki en havalı özelliklerden, ve az önce onları nasıl kullanmanız gerektiğini öğrendiniz! 
+Tebrikler! Boolean'lar programlamadaki en havalı özelliklerden, ve az önce onları nasıl kullanmanız gerektiğini öğrendiniz!
 
 # Kaydet!
 
+> Evdeki okuyucular için: Bu kısım [Python Basics: Saving files and "If" statement](https://www.youtube.com/watch?v=dOAg6QVAxyk) videosunda işlenmiştir.
+
 Şimdiye kadar kodumuzu bizi sadece tek satır yazmaya limitleyen yorumlayıcı üzerinde yazdık. Normal programlar dosyalar içine kaydedilir ve programlama dilimizin **yorumlayıcısıyla** veya **derleyicisiyle** çalıştırılır. Şimdiye kadar programlarımızı Python **yorumlayıcısında** teker satır teker satır çalıştırdık. Bundan sonraki görevlerde, birden fazla satıra ihtiyacımız olacak, bu yüzden şunlara ihtiyacımız olacak:
 
-*   Python yorumlayıcısından çıkın
-*   Seçtiğiniz kod düzenleyicisini açın
-*   Yeni Python dosyasına kod kaydedin
-*   Çalıştırın!
+- Python yorumlayıcısından çıkın
+- Seçtiğiniz kod düzenleyicisini açın
+- Yeni Python dosyasına kod kaydedin
+- Çalıştırın!
 
-Kullandığımız Python yorumlayıcısından çıkmak için sadece ~~~ exit() ~~~ fonksiyonunu yazmanız yeterlidir:
+Kullandığımız Python yorumlayıcısından çıkmak için `
+exit() ` fonksiyonunu yazın
 
-```"
+{% filename %}komut satırı{% endfilename %}
+
+```python
 >>> exit()
 $
-```    
+```
 
 Bu sizi komut satırına geri yönlendirecektir.
 
-Biraz önce [kod editörü][2] bölümünden bir kod editörü seçmiştik. Şimdi o editörü açmalı ve yeni bir dosya içine kod yazmalıyız:
+Biraz önce [kod editörü](../code_editor/README.md) bölümünden bir kod editörü seçmiştik. Şimdi o editörü açmalı ve yeni bir dosya içine kod yazmalıyız:
 
- [2]: ../code_editor/README.md
+{% filename %}editör{% endfilename %}
 
 ```python
 print('Merhaba, Django girls!')
-```    
-
-> **Not** Kod editörlerinin en havalı özelliğini fark etmiş olmalısınız: renkler! Python konsolunda her şey aynı renkteydi, şimdi `print` fonksiyonunun stringden farklı bir renkte olduğunu görüyorsunuz. Bunun ismi "söz dizimi vurgulama" ve kod yazarken gerçekten yararlı bir özellik. Koddaki renkler sana ipucu verecektir, örneğin metin kullanım hatasında veya dildeki anahtar kelimenin yanlış yazımında (mesela fonksiyondaki `def`, aşağıda göreceğiz). Bu kod düzenleyicisi kullanma nedenlerimizden biri :)
+```
 
 Açıkça, artık oldukça deneyimli Python programcısısın, bu yüzden bugün öğrendiğin kodları yazmaktan çekinme.
 
 Şimdi dosyayı tanımlayıcı bir isimle kaydetmemiz gerekir. Dosyanın ismine **python_intro.py** diyelim ve masaüstüne kaydedelim. Dosyaya istediğimiz ismi verebiliriz, burada önemli olan kısım dosyanın **.py** uzantısı ile bitmesidir. **.py** uzantısı işletim sistemimize bu dosyanın bir **python çalıştırılabilir dosyası** olduğunu ve Python'un bu dosyayı çalıştırabileceğini belirtiyor.
 
-Dosyayı kaydettiğimize göre artık çalıştırabiliriz! Konsoldan **Klasör değiştirme** yaparak masaüstüne ulaşın, komut satırı bölümünde öğrendiklerinizi hatırlayın.
+> **Not** Kod editörleriyle ilgili en harika şeylerden birine dikkat etmelisiniz: renkler! Python konsolunda herşey aynı renkteydi; şimdi bakın `print` fonksiyonu dizeden farklı renkte. Bunun ismi "söz dizimi vurgulama" ve kod yazarken gerçekten yararlı bir özellik. Koddaki renkler ipucu verir, kapanmamış dizeler gibi ya da aşağıda göreceğimiz (`def` fonksiyonu gibi imla hatası içeren anahtar kelimeler olabilir). Bu kod düzenleyicisi kullanma nedenlerimizden biri. :)
+
+Dosyayı kaydettiğimize göre artık çalıştırabiliriz! Konsoldan **klasör değiştirme ** yaparak masaüstüne ulaşın, komut satırı bölümünde öğrendiklerinizi hatırlayın.
+
+<!--sec data-title="Change directory: OS X" data-id="python_OSX"
+data-collapse=true ces-->
 
 Mac'de bu komut şunun gibi görünecektir:
 
-```
-$ cd /Users/<isminiz>/Desktop
-```
+{% filename %}komut-satırı{% endfilename %}
+
+    $ cd ~/Desktop
+    
+
+<!--endsec-->
+
+<!--sec data-title="Change directory: Linux" data-id="python_linux"
+data-collapse=true ces-->
 
 Linux'ta ise bu şekilde ("Desktop" kelimesi "Masaüstü" olarak da görünebilir):
 
-```
-$ cd /home/<isminiz>/Desktop
-```    
+{% filename %}komut-satırı{% endfilename %}
 
-Ve Windows'ta, bu şekilde olacak:
+    $ cd ~/Desktop
+    
 
-```
-> cd C:\Users\<isminiz>\Desktop
-```
+<!--endsec-->
 
-Bir problem olursa yardım istemekten çekinmeyin.
+<!--sec data-title="Change directory: Windows Command Prompt" data-id="python_windows" data-collapse=true ces-->
+
+Windows Komut İstemi’nde, bunun gibi olacak:
+
+{% filename %}komut-satırı{% endfilename %}
+
+    > cd %HomePath%\Desktop
+    
+
+<!--endsec-->
+
+<!--sec data-title="Change directory: Windows Powershell" data-id="python_windowsPSH" data-collapse=true ces-->
+
+Ve Windows Powershell’de, bunun gibi olacak:
+
+{% filename %}komut satırı{% endfilename %}
+
+    > cd $Home\Desktop
+    
+
+<!--endsec-->
+
+Takılırsanız, yardım isteyin. Eğitmenler bunun için var!
 
 Şimdi dosyadaki komutları çalıştırmak için Python'u kulllanın:
 
+{% filename %}komut-satırı{% endfilename %}
+
+    $ python3 python_intro.py
+    Merhaba, Django girls!
+    
+
+Not: Windows'ta 'python3' bir komut olarak geçmez. Onun yerine, dosyayı çalıştırmak için 'python'ı kullanın:
+
+{% filename %}komut satırı{% endfilename %}
+
+```python
+> python python_intro.py
 ```
-$ python3 python_intro.py
-Merhaba, Django girls!
-```    
 
 Tamam! Bir dosyaya kaydedilen ilk Python programınızı çalıştırdınız. Harika hissediyor musunuz?
 
 Şimdi programlamanın olmazsa olmaz bir aracını öğrenme zamanı:
 
-## If...elif...else (Koşullu Akış)
+## If … elif … else
 
 Kodunuzdaki bir çok şeyi sadece belirli bir durum sağlanıyorsa çalıştırmayı isteyeceksiniz. İşte tam da bu yüzden Python'da **if deyimi** isminde bir yapı bulunuyor.
 
 **python_intro.py** dosyasındaki kodunuzu şununla değiştirin:
 
+{% filename %}python_intro.py{% endfilename %}
+
 ```python
 if 3 > 2:
-```    
-
-Eğer bunu kaydedip çalıştırsaydık şu hatayla karşılaşacaktık:
-
 ```
-$ python3 python_intro.py
-File "python_intro.py", line 2
-         ^
-SyntaxError: unexpected EOF while parsing
-```    
+
+Eğer bunu kaydetmiş ve çalıştırmış olsaydık, bunun gibi bir hata görecektik:
+
+{% filename %}{{ warning_icon }} komut satırı{% endfilename %}
+
+    $ python3 python_intro.py
+    File "python_intro.py", line 2
+             ^
+    SyntaxError: unexpected EOF while parsing
+    
 
 Python bizden kendisine `3 > 2` durumu (veya `True`) sağlandığında neyi çalıştıracağını söylememizi bekliyor. Python'a "Çalışıyor!" yazmasını söyleyelim. **python_intro.py** dosyanızdaki kodu şununla değiştirin:
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 if 3 > 2:
     print('Çalışıyor!')
-```    
+```
 
-4 tane boşluk karakteri bıraktığımıza dikkat ettiniz mi? Bunu yaparak if cümlesine yazdığım durum doğru olduğunda neyi çalıştırması gerektiğini Python'a söylemiş oluyoruz. Aslında tek bir boşlukla da yapabilirsiniz, ama hemen hemen bütün Python programcıları kodlarının temiz görünmesi için 4 boşluk bırakıyor. Tek `tab` karakteri de 4 boşluk yerine geçecektir.
+4 tane boşluk karakteri bıraktığımıza dikkat ettiniz mi? Bunu yaparak if ifadesine yazılan durum doğru olduğunda neyi çalıştırması gerektiğini Python'a söylemiş oluyoruz. Aslında tek bir boşlukla da yapabilirsiniz, ama hemen hemen bütün Python programcıları kodlarının temiz görünmesi için 4 boşluk bırakıyor. Metin düzenleyiciniz ayarlıysa bir tab karakteri de 4 boşluk karakteri olarak sayılacaktır. Seçiminizi yaptıktan sonra değiştirmeyin! Eğer girintilerde 4 boşluk kullandıysanız, gelecek girintilerde de 4 boşluk kullanmaya devam edin - aksi halde sorunlarla karşılaşabilirsiniz.
 
 Kaydedip çalıştırmayı deneyelim:
 
-```  
+{% filename %}komut satırı{% endfilename %}
+
+```python
 $ python3 python_intro.py
 Çalışıyor!
-```    
+```
+
+Not: Windows'ta 'python3'ün komut olarak geçerli olmadığını unutmayın. Bundan böyle dosyayı çalıştırmak için 'python3'ü 'python'la değiştirin.
 
 ### Ya bir koşul True (Doğru) değilse?
 
-Önceki örneklerde kod sadece koşullar sadece True olduğunda çalışıyordu. Ama Python ayrıca `elif` ve `else` ifadelerine de sahip:
+Önceki örneklerde kod sadece koşullar sadece True (doğru) olduğunda çalışıyordu. Ama Python ayrıca `elif` ve `else` ifadelerine de sahip:
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 if 5 > 2:    
     print("5 gerçekten de 2'den büyüktür") 
 else:     
     print("5  2'den büyük değildir")
-```    
+```
 
 Bu kod çalıştığında aşağıdaki çıktıyı verecektir:
 
-```
-$ python3 python_intro.py
-5 gerçekten de 2'den büyüktür
-```    
+{% filename %}komut satırı{% endfilename %}
 
-Eğer 2 5'ten büyük bir sayı olsaydı ikinci komut çalışacaktı. Kolay, değil mi? Şimdi `elif`'in nasıl çalıştığına bakalım:
+    $ python3 python_intro.py
+    5 gerçekten de 2'den büyüktür
+    
+
+Eğer 2 5'ten büyük bir sayı olsaydı, ikinci komut çalıştırılmış olacaktı. Bakalım `elif` nasıl çalışıyor:
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 name = 'Zeynep'
@@ -612,18 +771,21 @@ elif name == 'Zeynep':
     print('Selam Zeynep!')
 else:
     print('Selam yabancı!')
-```    
+```
 
 ve çalıştırılınca:
 
-```
-$ python3 python_intro.py
-Selam Zeynep!
-```    
+{% filename %}komut-satırı{% endfilename %}
 
-Gördünüz mü? Eğer önceki if cümleleriniz doğru olmazsa kontrol edilmek üzere `elif` cümleleri ekleyebilirsiniz.
+    $ python3 python_intro.py
+    Selam Zeynep!
+    
 
-`if` cümlenizden sonra istediğiniz kadar `elif` cümlesi ekleyebilirsiniz. Mesela:
+Gördünüz mü? Eğer önceki if ifadeleriniz doğru olmazsa kontrol edilmek üzere `elif` ifadeleri ekleyebilirsiniz.
+
+`if` ifadesinden sonra istediğiniz kadar `elif` ifadesi ekleyebilirsiniz. Mesela:
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 volume = 57
@@ -639,39 +801,63 @@ elif 80 <= volume < 100:
     print("Biraz gürültülü!")
 else:
     print("Kulaklarım ağrıyor! :(")
-```   
+```
 
 Python sırayla her sorguyu çalıştırır ve sonucu ona göre yazar:
 
+{% filename %}komut satırı{% endfilename %}
+
+    $ python3 python_intro.py
+    Harika, her notayı duyabiliyorum
+    
+
+## Yorumlar
+
+Yorumlar `#` ile başlayan satırlardır. İstediğiniz her neyse `#` den sonra yazabilirsiniz ve Python onu gözardı eder. Yorumlar kodunuzu diğer insanların anlamasını daha kolaylaştırabilir.
+
+Bakalım nasıl gözüküyor:
+
+{% filename %}python_intro.py{% endfilename %}
+
+```python
+# Çok yüksek ya da çok düşük olduğunda ses seviyesini değiştirme
+if volume < 20 or volume > 80:
+    volume = 50
+    print("That's better!")
 ```
-$ python3 python_intro.py
-Harika, her notayı duyabiliyorum
-```    
+
+Kodun her satırı için bir açıklama yazmaya ihtiyacınız yoktur, ama kodunuzun niçin birşey yaptığını açıklamak ya da kompleks bir şey yaptığında bir özet sunmak için faydalıdırlar.
 
 ### Özet
 
-Son üç alıştırmada öğrendikleriniz:
+En son yaptığınız alıştırmalarda öğrendikleriniz:
 
-*   **kıyaslama yapmak** - Python'da `>`, `>=`, `==`, `<=`, `<`, `and`, `or` operatörlerini kullanarak kıyaslama yapabiliriz
-*   **Boolean** - İki farklı değer alabilen bir nesne tipidir: Ya `True` (doğru) olur ya da `False` (yanlış)
-*   **Dosya kaydetmek** - kodlarımızı dosyalara kaydederek daha büyük programları çalıştırabiliriz.
-*   **if...elif...else** - cümlelerini sadece belirli durumlar sağlandığında çalıştırmak istediğimiz komutlar için kullanabiliriz.
+- **kıyaslama yapmak** - Python'da `>`, `>=`, `==`, `<=`, `<` ve `ve`, `veya` operatörlerini kullanarak kıyaslama yapabilirsiniz
+- **Boolean** - İki farklı değer alabilen bir nesne tipidir: Ya `True` (doğru) olur ya da `False` (yanlış)
+- **Dosya kaydetmek** – kodlarımızı dosyalara kaydederek daha büyük programları çalıştırabiliriz.
+- **if ... elif ... else** - ifadelerini sadece belirli durumlar sağlandığında çalıştırmak istediğimiz komutlar için kullanabiliriz.
+- **yorumlar** - kodunuzu belgelemenize izin verecek şekilde Python’un çalışmayacağı satırlar
 
 Bu bölümün son kısmının zamanı geldi!
 
 ## Kendi fonksiyonlarınız!
 
-Python'daki `len()` gibi fonksiyonları hatırlıyor musunuz? Haberler iyi - artık kendi fonksiyonlarınızı da yazabileceksiniz!
+> Evdeki okuyucular için: Bu kısım [Python Basics: Functions](https://www.youtube.com/watch?v=5owr-6suOl0) videosunda işlenmiştir.
 
-Fonksiyon Python tarafından işlenmesi gereken yönergeler dizisidir. Python'da her fonksiyon `def` anahtar kelimesi ile başlar, bir isim verilir ve bazı parameterleri olabilir. Kolay bir tane ile başlayalım. **python_intro.py** içindeki kodu aşağıdaki ile değiştirelim:
+Python'da çalıştırabileceğin `len()` gibi fonksiyonları hatırlıyor musun? Güzel, iyi haber - Şimdi kendi fonksiyonlarını nasıl yazacağını öğreneceksin!
+
+Fonksiyon Python tarafından işlenmesi gereken yönergeler dizisidir. Python'da her fonksiyon `def` anahtar kelimesi ile başlar, bir isim verilir ve bazı parameterleri olabilir. Hadi başlayalım. **python_intro.py** içindeki kodu aşağıdaki ile değiştirelim:
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
+python
 def hi():
     print('Merhaba!')
     print('Nasılsın?')
-  
+
 hi()
-```    
+```
 
 Tamam, ilk fonksiyonumuz hazır!
 
@@ -679,171 +865,205 @@ Fonksiyon adını neden dosyanın en altına yazdığımızı merak edebilirsini
 
 Haydi şimdi bunu çalıştıralım ve neler olacağını görelim:
 
-```
-$ python3 python_intro.py
-Merhaba!
-Nasılsın?
-```    
+{% filename %}komut satırı{% endfilename %}
 
-Bu epey kolaydı! Şimdi parametreli bir fonksiyon yazalım. Bir önceki örneği kullanabiliriz - fonksiyonumuz yine 'merhaba' desin - ama bu sefer ismini de söylesin:
+    $ python3 python_intro.py
+    Merhaba!
+    Nasılsın?
+    
+
+Not: Eğer çalışmadıysa panik yapmayın! Çıktı neden olduğu hakkında bir fikir verir:
+
+- Eğer bir `NameError` alırsanız, muhtemelen yanlış bir şey yazdığınız anlamına gelir, bu nedenle `def hi():` lı fonksiyonu oluştururken ve `hi()` lıyı çağırırken aynı adı kullanıp kullanmadığınızı kontrol etmelisiniz.
+- Eğer bir `IndentationError` alırsanız,`print` dizelerinin her ikisinin de satır başında aynı boşluğa sahip olduğunu kontrol et: python fonksiyonun içindeki tüm kodların düzenli bir şekilde hizalanmasını ister.
+- Eğer tamamında da çıktı yoksa, son `hi()` *isn't* girintiliğini kontrol et - eğer öyleyse, bu dize fonksiyonunda bir parçası haline gelecek ve hiçbir zaman çalışmayacak.
+
+İlk fonksiyonumuzu parametrelerle birlikte oluşturalım. Önceki örneği - çalışmaktaki kişiye merhaba diyen bi fonksiyon - ismiyle kullanacağız:
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 def hi(name):
-```    
+```
 
 Gördüğünüz gibi, fonksiyonumuza `name` (isim) adında bir parametre ekledik:
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 def hi(name):
     if name == 'Ayşe':
-        print('Selam Ayşe!')
+        print("Merhaba Ayşe!')
     elif name == 'Zeynep':
-        print('Selam Zeynep!')
+        print('Merhaba Zeynep!')
     else:
-        print('Selam yabancı!')
-    
+        print('Merhaba yabancı!')
+
 hi()
-```    
+```
 
 Unutmayın: `if` içerisindeki `print` fonksiyonundan önce dört tane boşluk var. Bunun sebebi sadece durum sağlandığında çalışmasını istememiz. Bakalım nasıl çalışıyor:
 
-```
-$ python3 python_intro.py
-Traceback (most recent call last):
-File "python_intro.py", line 10, in <module>
-  hi()
-TypeError: hi() missing 1 required positional argument: 'name'
-```    
+{% filename %}{{ warning_icon }} komut satırı{% endfilename %}
+
+    $ python3 python_intro.py
+    Traceback (most recent call last):
+    File "python_intro.py", line 10, in <module>
+      hi()
+    TypeError: hi() missing 1 required positional argument: 'name'
+    
 
 Üzgünüz, bir hata. Neyse ki, Python bize oldukça yararlı bir hata mesajı veriyor. `hi()` fonksiyonun (yukarıda tanımladığımız) bir değişken kullanımını gerektirdiğini (`name` isimli) ve bizim o değişkeni fonksiyonu çağırırken iletmeyi unuttuğumuzu söylüyor. Dosyanın alt kısmında hatayı düzeltelim:
 
+{% filename %}python_intro.py{% endfilename %}
+
 ```python
 hi("Ayşe")
-```    
+```
 
 Ve tekrar çalıştıralım:
 
-```
-$ python3 python_intro.py
-    Selam Ayşe!
-```    
+{% filename %}komut satırı{% endfilename %}
 
-Ve eğer ismi değiştirirsek ne olur?
+    $ python3 python_intro.py
+    Selam Ayşe!
+    
+
+Eğer ismi değiştirirsek ne olur?
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 hi("Zeynep")
-```    
+```
 
 Ve çalıştırın:
 
-```
-$ python3 python_intro.py
-Selam Zeynep!
-```    
+{% filename %}komut-satırı{% endfilename %}
+
+    $ python3 python_intro.py
+    Selam Zeynep!
+    
 
 Peki Ayşe veya Zeynep dışında başka bir isim yazdığımızda ne olacağını tahmin edebiliyor musunuz? Deneyin ve tahmininizin doğru olup olmadığını görün. Şunun gibi bir şey yazmalı:
 
-```
-Selam yabancı!
-```    
+{% filename %}komut satırı{% endfilename %}
+
+    Selam yabancı!
+    
 
 Süper değil mi? Böylece fonksiyona göndereceğiniz isim değiştiğinde aynı kodu tekrar tekrar yazmanıza gerek kalmayacak. İşte fonksiyonlara tam da bu yüzden ihtiyacımız var - aynı kodu tekrar yazmaya gerek yok!
 
-Hadi daha akıllıca bir şeyler yapalım -- tabii ki ikiden fazla isim var ve her isim için bir kontrol yazmak zor olurdu, değil mi?
+Hadi daha zekice bir şey yapalım - İkiden fazla isim var ve her biri için bir şart yazmak zor olur değil mi?
+
+{% filename %}python_intro.py{% endfilename %}
 
 ```python
 def hi(name):
-    print('Selam ' + name + '!')
-    
+    print('Merhaba ' + name + '!')
+
 hi("Seda")
-```    
+```
 
 Şimdi kodu çağıralım:
 
-```
-$ python3 python_intro.py
-Selam Seda!
-```    
+{% filename %}komut satırı{% endfilename %}
+
+    $ python3 python_intro.py
+    Merhaba Seda!
+    
 
 Tebrikler! Az önce fonksiyonları nasıl yazacağınızı öğrendiniz! :)
 
 ## Döngüler
 
+> Evdeki okuyucular için: Bu kısım [Python Basics: For Loop](https://www.youtube.com/watch?v=aEA6Rc86HF0) videosunda işlenmiştir.
+
 Bu da zaten son parça. Hızlı oldu, değil mi? :)
 
-Programcılar kendilerini tekrar etmeyi sevmezler. Programlama tamamen işleri otomatize etmedir, bu yüzden her insanı ismiyle selam istemeyiz, değil mi? İşte burası döngülerin devreye girdiği yerdir.
+Programcılar kendilerini tekrar etmeyi sevmezler. Programlama tamamen işleri otomatize etmedir, bu yüzden her insanı ismiyle selamlamak istemeyiz, değil mi? İşte burası döngülerin devreye girdiği yerdir.
 
 Hala listeleri hatırlıyoruz değil mi? Haydi bir kızlar listesi yapalım:
 
+{% filename %}python_intro.py{% endfilename %}
+
 ```python
-girls = ['Seda', 'Gül', 'Pınar', 'Ayşe', 'Sen']
-```    
+kızlar = ['Seda', 'Gül', 'Pınar', 'Ayşe', 'Sen']
+```
 
 Diyelim ki hepsine merhaba demek istiyoruz. Az önce yazdığımız `hi` fonksiyonunu döngü içinde kullanabiliriz:
 
+{% filename %}python_intro.py{% endfilename %}
+
 ```python
 for name in girls:
-```    
+```
 
-~~~ for~~~ cümlesi ~~~ if~~~ cümlesine benzer davranır; ikisi için de dört boşluk karakterine ihtiyacımız car.
+`for` un davranışı `if` e benziyor; aşağıdaki kodda her iki satır girintili olmalı (dört boşluk ile).
 
 Dosyada yer alacak tam kod aşağıdadır:
 
+{% filename %}python_intro.py{% endfilename %}
+
 ```python
 def hi(name):
-    print('Selam ' + name + '!')
-    
+    print('Merhaba ' + name + '!')
+
 girls = ['Seda', 'Gül', 'Pınar', 'Ayşe', 'Sen']
 for name in girls:
     hi(name)
-    print('Sıradaki')
-```    
+    print('Sıradaki kız')
+```
 
 Ve onu çalıştırdığımız zaman:
 
-```
-$ python3 python_intro.py
-Selam Seda!
-Sıradaki
-Selam Gül!
-Sıradaki
-Selam Pınar!
-Sıradaki
-Selam Ayşe!
-Sıradaki
-Selam Sen!
-Sıradaki
-```
+{% filename %}komut satırı{% endfilename %}
+
+    $ python3 python_intro.py
+    Selam Seda!
+    Sıradaki kız
+    Selam Gül!
+    Sıradaki kız
+    Selam Pınar!
+    Sıradaki kız
+    Selam Ayşe!
+    Sıradaki kız
+    Selam Sen!
+    Sıradaki kız
+    
 
 Gördüğünüz gibi, `for` cümlesinin içine boşluk karakteri ile koyduğunuz her şey `girls` listesi için tekrarlanıyor.
 
 Ayrıca `for`'u `range` fonksiyonuyla beraber sayılar üzerinde de kullanabilirsiniz:
 
-```
+{% filename %}python_intro.py{% endfilename %}
+
+```python
 for i in range(1, 6):
     print(i)
-```    
+```
 
 Çalıştırırsak:
 
-```
-1
-2
-3
-4
-5
-```    
+{% filename %}komut satırı{% endfilename %}
+
+    1
+    2
+    3
+    4
+    5
+    
 
 `range` fonksiyonu birbirini takip eden sayılardan bir liste oluşturur (bu sayıları da siz parametre olarak yazarsınız).
 
-Sizin verdiğiniz ikinci parametrenin listede olmadığına dikkat edin. Yani `range(1, 6)` 1'den 5'e kadar sayıyor, 6 dahil edilmiyor. Çünkü "range" yarı-açık bir aralık ifade ediyor, yani ilk sayı dahil ediliyor ama sondaki sayı dahil edilmiyor.
+Sizin verdiğiniz ikinci parametrenin listede olmadığına dikkat edin. Yani `range(1, 6)` 1'den 5'e kadar sayıyor, 6 dahil edilmiyor. Çünkü “aralık” yarı açıktır, ve yani ilk değeri içerir, ama son değeri içermez.
 
 ## Özet
 
 İşte bu. **Harikasın, süpersin!** Bu bölüm biraz zordu, kendinle gurur duymalısın. Biz buraya kadar geldiğin için seninle gurur duyuyoruz!
 
-Bir sonraki bölüme geçmeden önce kısa bir süreliğine başka birşey yapmak isteyebilirsiniz - esneyin, biraz etrafı dolaşın, gözlerinizi dinlendirin :)
+Resmi ve tam python tutorialı için https://docs.python.org/3/tutorial/ adresini ziyaret edin. Bu size dil hakkında daha kapsamlı ve eksiksiz bir çalışma sunacaktır. Teşekkürler :)
 
-![Kek][3]
+Sonraki bölüme geçmeden başka bir şey yapmak isteyebilirsin. -gerin, biraz etrafta gezin, gözlerini dinlendir- :)
 
- [3]: images/cupcake.png
+![Cupcake](images/cupcake.png)

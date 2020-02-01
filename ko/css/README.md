@@ -1,6 +1,6 @@
 # CSS - 예쁘게 만들기
 
-아직 우리가 만든 블로그가 예쁘지 ? 이제 눈에 보기 좋게 예쁘게 만들어 볼 시간이에요. CSS를 사용해 만들어볼 거에요.
+아직 우리가 만든 블로그가 예쁘지 않죠? 이제 눈에 보기 좋게 예쁘게 만들어 볼 시간이에요. CSS를 사용해 만들어볼 거에요.
 
 
 ## CSS는 무엇인가요?
@@ -42,7 +42,7 @@ CSS(Cascading Style Sheets)는 HTML와 같이 마크업언어(Markup Language)�
 
 ### 정적 파일은 어디에 넣어야 하나요
 
-서버에서 `collectstatic`를 실행할 때 처럼, 장고는 "admin"앱에서 동적 파일을 어디서 찾아야하는지 이미 알고 있어요. 이제 "blog"앱에 동적파일을 추가하면 됩니다.
+서버에서 `collectstatic`를 실행할 때 처럼, 장고는 "admin"앱에서 정적 파일을 어디서 찾아야하는지 이미 알고 있어요. 이제 "blog"앱에 정적파일을 추가하면 됩니다.
 
 "blog"앱 안에 `static`라는 새 폴더를 만드세요. :
 
@@ -50,7 +50,8 @@ CSS(Cascading Style Sheets)는 HTML와 같이 마크업언어(Markup Language)�
     djangogirls
     ├── blog
     │   ├── migrations
-    │   └── static
+    │   ├── static
+    │   └── templates
     └── mysite
 ```
 
@@ -69,7 +70,7 @@ CSS파일을 만들어 나만의 스타일을 가진 웹페이지를 만들어�
                    └─── blog.css
 ```
 
-CSS를 쓸 차례에요! 코드 에디터에서 `blog/static/css/blog.css`파일을 열어보세요.
+CSS를 쓸 차례예요! 코드 에디터에서 `blog/static/css/blog.css`파일을 열어보세요.
 
 CSS는 꽤 쉽고 워크샵 후에도 스스로 배울 수 있기 때문에 CSS에 대해 깊이 살펴보지는 않을 거에요. 이 장 맨 마지막 부분에 추천하는 무료 사이트가 있습니다.
 
@@ -98,10 +99,10 @@ W3Schools에서 [CSS 선택자](https://www.w3schools.com/cssref/css_selectors.a
 
 {% filename %}blog/templates/blog/post_list.html{% endfilename %}
 ```html
-{% load staticfiles %}
+{% load static %}
 ```
 
-여기에서 동적 파일을 로딩하는 거에요. :)
+여기에서 정적 파일을 로딩하는 거에요. :)
 다음 `<head>`와 `</head>` 사이에 부트스트랩 CSS파일 링크 다음에 아래 코드를 추가하세요.
 
 {% filename %}blog/templates/blog/post_list.html{% endfilename %}
@@ -116,7 +117,7 @@ W3Schools에서 [CSS 선택자](https://www.w3schools.com/cssref/css_selectors.a
 
 {% filename %}blog/templates/blog/post_list.html{% endfilename %}
 ```html
-{% load staticfiles %}
+{% load static %}
 <html>
     <head>
         <title>Django Girls blog</title>

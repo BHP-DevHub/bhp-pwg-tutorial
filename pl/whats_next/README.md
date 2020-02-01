@@ -1,40 +1,42 @@
 # Co dalej?
 
-Możesz być z siebie dumna! **Jesteś absolutnie świetna**. Jesteśmy takie dumne! <3
+Możesz z siebie być dumna! **Jesteś absolutnie świetna**. Jesteśmy takie dumne! <3
 
 ### Co teraz?
 
 Zrób sobie przerwę i zrelaksuj się. Odwaliłaś kawał dobrej roboty!
 
-Zaraz po tym, upewnij się, że:
-
-*   Obserwujesz Django Girls na [Facebooku][1] lub [Twitterze][2], żeby być na bieżąco
-
- [1]: http://facebook.com/djangogirls
- [2]: https://twitter.com/djangogirls
+Potem, upewnij się, że śledzisz Django Girls na [Facebooku](http://facebook.com/djangogirls) i [Twitterze](https://twitter.com/djangogirls) by być na bieżąco.
 
 ### Czy możesz polecić kolejne materiały?
 
-Tak! Najpierw możesz spróbować naszej kolejnej książki: [Django Girls Tutorial: Extensions][3] -- zawiera rozszerzenia i dodatkowe zadania związane z tym, co już tutaj przerobiłaś.
+Tak! Jest *wiele* materiałów online do nauki dowolnych umiejętności programistycznych - może to być całkiem zniechęcające, gdy trzeba wybrać spośród wielu stron. My wybrałyśmy te najciekawsze. Niezależnie od tego, czym interesowałaś się, zanim przybyłaś na Django Girls i niezależnie od tego, co zainteresowało Cię podczas przechodzenia tutoriala, oto kilka darmowych zasobów (lub zasobów z dużymi darmowymi komponentami), których możesz używać, aby się podszkolić.
 
- [3]: http://djangogirls.gitbooks.io/django-girls-tutorial-extensions/
+#### Django
 
-Możesz też wypróbować materiały, które wypisałyśmy poniżej. Wszystkie bardzo polecamy!
+- Nasza inna książka, [Django Girls Tutorial: Extensions ](https://tutorial-extensions.djangogirls.org/)
+- [Oficjalny tutorial Django](https://docs.djangoproject.com/en/2.0/intro/tutorial01/)
+- [Wideolekcje Getting Started with Django](http://www.gettingstartedwithdjango.com/)
 
-- [Oficjalna dokumentacja Django][4]
-- [instrukcje New Coder][5]
-- [kurs Code Academy Python][6]
-- [kurs Code Academy HTML & CSS][7]
-- [tutorial Django Carrots][8]
-- [książka Learn Python The Hard Way][9]
-- [video lekcje Getting Started With Django][10]
-- [książka Two Scoops of Django: Best Practices for Django 1.8][11]
+#### HTML, CSS i JavaScript
 
- [4]: https://docs.djangoproject.com/en/1.8/intro/tutorial01/
- [5]: http://newcoder.io/tutorials/
- [6]: https://www.codecademy.com/en/tracks/python/
- [7]: https://www.codecademy.com/tracks/web/
- [8]: https://github.com/ggcarrots/django-carrots/
- [9]: http://learnpythonthehardway.org/book/
- [10]: http://www.gettingstartedwithdjango.com/
- [11]: https://twoscoopspress.com/products/two-scoops-of-django-1-8/
+- [Kurs programowania webowego na Codeacademy](https://www.codecademy.com/learn/paths/web-development)
+- [freeCodeCamp](https://www.freecodecamp.org/)
+
+#### Python
+
+- [Kurs Pythona na Codeacademy](https://www.codecademy.com/learn/learn-python)
+- [Kurs Pythona od Google'a](https://developers.google.com/edu/python/)
+- [Learn Python The Hard Way book](http://learnpythonthehardway.org/book/) - wstępne ćwiczenia są bezpłatne 
+- [New Coder tutorials](http://newcoder.io/tutorials/)-jest wiele praktycznych przykładów, jak można użyć Pythona
+- [edX](https://www.edx.org/course?search_query=python) - możesz sprawdzić większość kursów za darmo, lecz jeśli chciałabyś otrzymać certyfikat lub zdobyć punkty zwiększające Twoje kwalifikacje, to może to trochę kosztować
+- [Coursera's Python specialization](https://www.coursera.org/specializations/python) - niektóre wykłady wideo są dostępne za darmo i możesz uzyskać Certyfikat Kursanta, przechodząc przez niego
+- [Python for Everybody](https://www.py4e.com/) - wolna i otwarta wersja Coursera Pythona dla każdej specjalizacji
+
+#### Praca z danymi
+
+- [Kurs data science na Codeacademy](https://www.codecademy.com/learn/paths/data-science)
+- [edX](https://www.edx.org/course/?search_query=python&subject=Data%20Analysis%20%26%20Statistics) - możesz sprawdzić większość kursów za darmo, lecz jeśli chciałabyś otrzymać certyfikat lub zdobyć punkty zwiększające Twoje kwalifikacje, to może to trochę kosztować
+- [Dataquest](https://www.dataquest.io/) – pierwszych 30 "misji" jest darmowych 
+
+Nie możemy się doczekać, aby zobaczyć, co zbudujesz następnym razem!

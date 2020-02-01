@@ -55,14 +55,14 @@ $ python3 -m venv myvenv
 {% filename %}command-line{% endfilename %}
 ```
 The virtual environment was not created successfully because ensurepip is not available.  On Debian/Ubuntu systems, you need to install the python3-venv package using the following command.
-    apt-get install python3-venv
+    apt install python3-venv
 You may need to use sudo with that command.  After installing the python3-venv package, recreate your virtual environment.
 ```
 
 이 경우, 위의 지시에 따라 `python3-venv` 패키지를 설치하세요. :
 {% filename %}command-line{% endfilename %}
 ```
-$ sudo apt-get install python3-venv
+$ sudo apt install python3-venv
 ```
 
 > **Note** Debian/Ubuntu의 일부 버전에서 이와 같이 가상 환경을 초기화하면 현재 다음과 같은 오류가 발생합니다. :
@@ -75,8 +75,8 @@ Error: Command '['/home/eddie/Slask/tmp/venv/bin/python3', '-Im', 'ensurepip', '
 
 {% filename %}command-line{% endfilename %}
 ```
-$ sudo apt-get install python-virtualenv
-$ virtualenv --python=python3.5 myvenv
+$ sudo apt install python-virtualenv
+$ virtualenv --python=python3.6 myvenv
 ```
 
 > **Note** 아래와 같은 오류가 발생한다면
@@ -90,7 +90,7 @@ E: Unable to locate package python3-venv
 
 {% filename %}command-line{% endfilename %}
 ```
-sudo apt install python3.5-venv
+sudo apt install python3.6-venv
 ```
 
 <!--endsec-->
@@ -154,17 +154,17 @@ $ . myvenv/bin/activate
 
 {% filename %}command-line{% endfilename %}
 ```
-(myvenv) ~$ pip install --upgrade pip
+(myvenv) ~$ python3 -m pip install --upgrade pip
 ```
-그런 다음 `pip install django~=1.10.0`(Django를 설치하려면 물결표 뒤에 등호 :`~=`)를 입력해 장고를 설치하세요.
+그런 다음 `pip install django~=2.0.0`(Django를 설치하려면 물결표 뒤에 등호 :`~=`)를 입력해 장고를 설치하세요.
 
 {% filename %}command-line{% endfilename %}
 ```
-(myvenv) ~$ pip install django~=1.10.0
-Collecting django~=1.10.0
-  Downloading Django-1.10.4-py2.py3-none-any.whl (6.8MB)
-Installing collected packages: django
-Successfully installed django-1.10.4
+(myvenv) ~$ pip install django~=2.0.0
+Collecting Django~=2.0.6
+  Downloading Django-2.0.6-py3-none-any.whl (7.1MB)
+Installing collected packages: Django
+Successfully installed Django-2.0.6
 ```
 
 <!--sec data-title="Windows" data-id="django_err_windows" data-collapse=true ces-->
