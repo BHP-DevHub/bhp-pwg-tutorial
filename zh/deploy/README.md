@@ -6,7 +6,7 @@
 
 正如你所学习的，一个网站必须要放到一个服务器上。 在互联网上你可以找到很多的服务器供应商。 我们将使用一个相对简单的部署过程: [PythonAnywhere][1]。 PythonAnywhere 对于一些没有太多访问者的小应用是免费的，所以它对你来说绝对是足够使用的。
 
- [1]: https://pythonanywhere.com/
+ [1]: https://www.pythonanywhere.com/
 
 其它我们将使用到的外部服务是[GitHub][2]，它是一个代码托管服务。 还有其它的一些服务，但当今几乎所有的程序员都有 GitHub 帐户，并且现在你也会有的！
 
@@ -56,7 +56,7 @@ Git会追踪这个目录下所有文件和文件夹的更改，但是有一些�
     $ git status
     On branch master
     
-    Initial commit
+    No commits yet
     
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
@@ -80,7 +80,7 @@ Git会追踪这个目录下所有文件和文件夹的更改，但是有一些�
     create mode 100644 mysite/wsgi.py
     
 
-## 推送我们的代码到Github上
+## 推送我们的代码到 GitHub 上
 
 跳转到[GitHub.com][2]网站，注册一个新的免费账号。（如果你在看线下活动之前就已经有账号的话，那就太好了！）
 
@@ -98,7 +98,7 @@ Git会追踪这个目录下所有文件和文件夹的更改，但是有一些�
 
  [4]: images/github_get_repo_url_screenshot.png
 
-现在我们需要把你电脑上的Git仓库和Github上的挂接。
+现在我们需要把你电脑上的Git仓库和GitHub上的挂接。
 
 在控制台输入以下内容（替换 `<your-github-username>` 为你的 github 用户名 ，不包含尖括号）：
 
@@ -106,7 +106,7 @@ Git会追踪这个目录下所有文件和文件夹的更改，但是有一些�
     $ git push -u origin master
     
 
-输入你的Github账号名和密码，然后你会看到这样：
+输入你的GitHub账号名和密码，然后你会看到这样：
 
     Username for 'https://github.com': hjwp
     Password for 'https://hjwp@github.com':
@@ -120,7 +120,7 @@ Git会追踪这个目录下所有文件和文件夹的更改，但是有一些�
 
 <!--TODO: maybe do ssh keys installs in install party, and point ppl who dont have it to an extention -->
 
-你的代码已经在Github上了。 快去确认一下吧！ 你会发现这些好家伙们 — [Django][5], [Django Girls Tutorial][6]，还有很多其它优秀的开放源代码软件项目同样也在Github上 :)
+你的代码已经在GitHub上了。 快去确认一下吧！ 你会发现这些好家伙们 — [Django][5], [Django Girls Tutorial][6]，还有很多其它优秀的开放源代码软件项目同样也在GitHub上 :)
 
  [5]: https://github.com/django/django
  [6]: https://github.com/DjangoGirls/tutorial
@@ -137,7 +137,7 @@ Git会追踪这个目录下所有文件和文件夹的更改，但是有一些�
 
 > **注意** PythonAnywhere 基于 Linux，因此如果你使用 Windows，控制台将会和你本地电脑上的略有不同。
 
-让我们通过创建一个我们仓库的 “Clone” 以便从 Github 拉取代码到 PythonAnywhere。 在 PythonAnywhere 控制台输入以下 (不要忘记使用 Github 用户名替换 `<your-github-username>`)：
+让我们通过创建一个我们仓库的 “Clone” 以便从 GitHub 拉取代码到 PythonAnywhere。 在 PythonAnywhere 控制台输入以下 (不要忘记使用 GitHub 用户名替换 `<your-github-username>`)：
 
     $ git clone https://github.com/<your-github-username>/my-first-blog.git
     

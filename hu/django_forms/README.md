@@ -53,7 +53,7 @@ Figyelem: az új nézetünket `post_new`-nak fogjuk hívni. A `"glyphicon glyphi
 Miután hozzáadtad ezt a sort, így fog kinézni a html fájlod:
 
 ```html
-{% load staticfiles %}
+{% load static %}
 <html>
     <head>
         <title>Django Girls blog</title>
@@ -340,7 +340,7 @@ Változtasd meg a címet vagy a szöveget, és mentsd el!
 
 Gratulálunk! Az alkalmazásod egyre és egyre jobb!
 
-Ha szeretnél többet tudni a Django formokról, olvass róluk a dokumentációban: https://docs.djangoproject.com/en/1.10/topics/forms/
+Ha szeretnél többet tudni a Django formokról, olvass róluk a dokumentációban: https://docs.djangoproject.com/en/1.11/topics/forms/
 
 ## Biztonság
 

@@ -1,178 +1,221 @@
-# Django ORM ve QuerySets (Sorgu Setleri)
+# Django ORM ve QuerySets (SorguSetleri)
 
 Bu bölümde Django'nun veritabanına nasıl bağlandığını ve veriyi nasıl sakladığını öğreneceğiz. Hadi başlayalım!
 
 ## QuerySet (SorguSeti) Nedir?
 
-QuerySet (SorguSeti), esas olarak, verilen bir modelin nesnelerinin listesidir. QuerySet veritabanından veri okumamıza, veriyi filtrelememize ve sıralamamıza imkan sağlar.
+QuerySet (SorguSeti), esas olarak, verilen bir modele ait nesnelerin listesidir. QuerySet veritabanından veri okumamıza, veriyi filtrelememize ve sıralamamıza imkan sağlar.
 
-En kolayı örnekle öğrenmektir. Hadi deneyelim, olur mu?
+En kolayı örnek ile öğrenmektir. Hadi deneyelim, olur mu?
 
 ## Django shell (kabuk)
 
-Yerel konsolumuzu açalım (PythonAnywhere'dekini değil) ve şu komutu yazalım:
-```
-(myvenv) ~/djangogirls$ python manage.py shell
-```    
+Bilgisayarımızdaki konsolu açalım (PythonAnywhere'dekini değil) ve şu komutu yazalım:
+
+{% filename %}komut-satırı{% endfilename %}
+
+    (myvenv) ~/djangogirls$ python manage.py shell
+    
 
 Etkisi aşağıdaki gibi olmalı:
-```
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 (InteractiveConsole)
 >>>
-```    
+```
 
 Şu an Django'nun etkileşimli konsolundayız. Python istemine benziyor, ama biraz Django büyüsü eklenmiş :) Kuşkusuz burada da Python komutlarının tümünü kullanabiliriz.
 
 ### Tüm nesneler
 
-Önce tüm gönderilerimizi görüntülemeyi deneyelim. Bunu aşağıdaki komut ile yapabiliriz:
+Önce tüm post'larımızı görüntülemeyi deneyelim. Bunu aşağıdaki komut ile yapabiliriz:
 
-```
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> Post.objects.all()
 Traceback (most recent call last):
-  File "<console>", line 1, in <module>
+      File "<console>", line 1, in <module>
 NameError: name 'Post' is not defined
-```    
-
-Aman! Bir hata meydana geldi. Bize bir gönderi olmadığını söylüyor. Doğru - önce gönderiyi almayı unuttuk!
-
 ```
+
+Ahh! Bir hata meydana geldi. Bize Post'un tanımlı olmadığını söylüyor. Bu doğru, öncesinde post'u dahil etmeyi (import) unuttuk!
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> from blog.models import Post
-```    
-
-`Post` modelini `blog.models` model havuzundan kolayca kodumuza dahil ettik. Şimdi bütün gönderileri tekrar göstermeyi deneyelim:
-
 ```
->>> Post.objects.all()
-<QuerySet [<Post: Gönderi 1>, <Post: Gönderi 2>]>
-```    
 
-Daha önce yarattığımız gönderilerin listesi! Bu gönderileri Django yönetici arayüzü kullanarak yaratmıştık. Şimdi ise Python kullanarak yeni gönderiler yaratmak istiyoruz, bunu nasıl yapabiliriz?
+`blog.models`'dan `Post` modelini dahil ettik (import). Tekrar bütün post'ları görüntülemeyi deneyelim:
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> Post.objects.all()
+<QuerySet [<Post: Gönderi başlığım>, <Post: Diğer bir gönderi başlığı>]>
+```
+
+Bu daha önce oluşturduğumuz post'ların listesi! Bu post'ları Django admin arayüzü ile oluşturduk. Fakat şimdi Python kullanarak yeni post'lar oluşturmak istiyoruz, peki bunu nasıl yaparız?
 
 ### Nesne oluşturma
 
 Veritabanına yeni bir gönderi eklemek için:
 
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> Post.objects.create(author=ben, title='Harika bir gönderi', text='Ne desem bilemedim')
 ```
->>> Post.objects.create(yazar=ben, baslik='Harika bir gönderi', yazi='Ne desem bilemedim')
-```    
 
-Ancak bir eksiğimiz var: `ben`. Gönderinin yazar özelliğine `User` modelinden türetilen bir nesneyi parametre olarak vermemiz gerekiyor. Nasıl verebiliriz?
+Ancak bir eksiğimiz var: `ben`. Gönderinin author (yazar) özelliğine `User` (kullanıcı) modelinden türetilen bir nesneyi parametre olarak vermemiz gerekiyor. Nasıl verebiliriz?
 
-Öncelikle kullanıcı modelini dahil edelim:
+Öncelikle User (kullanıcı) modelini dahil edelim:
 
-```
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> from django.contrib.auth.models import User
-``` 
+```
 
 Veritabanımızda hangi kullanıcılar var? Şu şekilde görebiliriz:
 
-```
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> User.objects.all()
 <QuerySet [<User: zeynep>]>
-```    
-
-Daha önce yarattığımız ayrıcalıklı kullanıcı! Şimdi veritabanından kullanıcı nesnesi alalım:
-
 ```
-ben = User.objects.get(username='zeynep')
-```    
 
-Gördüğünüz gibi, `username` özelliği 'zeynep' olan `User` nesnesini `get` ile aldık. Müthiş! Tabiki, kullanıcı adını kendi kullanıcı adınıza göre ayarlamalısınız.
+Bu daha önce yarattığımız süper kullanıcı (superuser)! Şimdi bu kullanıcının örneğini (instance) alalım (bu satırı kendi kullanıcı adınızı kullanmak için değiştirin):
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+ben = User.objects.get(username='zeynep')
+```
+
+Görebildiğiniz gibi, şimdi `kullanıcı adı` 'zeynep' olan bir `User` aldık. Temiz!
 
 Gönderimizi artık kaydedebiliriz:
 
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> Post.objects.create(author=ben, title='Harika bir gönderi', text='Ne desem bilemedim')
+<Post: Harika bir gönderi>
 ```
->>> Post.objects.create(yazar=ben, baslik='Harika bir gönderi', yazi='Ne desem bilemedim')
-```    
 
 Yaşasın! Çalışıp çalışmadığını kontrol etmek ister misin?
 
-```
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> Post.objects.all()
-<QuerySet [<Post: Gönderi 1>, <Post: Gönderi 2>, <Post: Harika bir gönderi>]>
-```    
+<QuerySet [<Post: Gönderi başlığım>, <Post: Diğer bir gönderi başlığı>,<Post: Harika bir gönderi>]>
+```
 
 İşte bu kadar, listede bir gönderi daha!
 
-### Daha fazla gönderi ekle
+### Daha fazla post ekle
 
-Şimdi biraz eğlenenebiliriz ve nasıl çalıştığını görmek için daha fazla gönderi ekleyebiliriz. 2-3 tane daha ekleyin ve bir sonraki kısma devam edin.
+Şimdi daha fazla post ekleyerek biraz eğlenebilir ve nasıl çalıştığını görebiliriz. İki veya üç tane daha ekleyelim ve sıradaki bölüme geçelim.
 
 ### Nesneleri filtrelemek
 
-QuerySets in büyük bir parçası nesneleri filtreleyebilme kabiliyetidir. Diyelim ki, Zeynep tarafından yazılmış tüm gönderileri bulmak istiyoruz. `Post.objects.all()` içindeki `all` yerine `filter` kullanacağız. Parantez içine istediğimiz blog gönderilerinin sağlaması gereken şartları belirteceğiz. Örneğimizde, `yazar` `ben`'e eşitti. Django'da bu filtre şöyle yazılır: `yazar=ben`. Şu an kod parçacığımız şöyle görünüyor:
+QuerySet'lerin büyük bir bölümü nesneleri filtreleme yeteneğidir. Diyelim ki, Zeynep tarafından yazılmış tüm post'ları (gönderileri) bulmak istiyoruz. `Post.objects.all()` içindeki `all` yerine `filter` kullanacağız. Parantez içine istediğimiz blog gönderilerinin sağlaması gereken şartları belirteceğiz. Örneğimizde, `author` `ben`'e eşitti. Django'da bu filtreyi şöyle yazıyoruz: `author=ben`. Şu an kod parçacığımız şöyle görünüyor:
 
-```
->>> Post.objects.filter(yazar=ben)
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> Post.objects.filter(author=ben)
 [<Post: Gönderi 1>, <Post: Gönderi 2>, <Post: Harika bir gönderi>, <Post: Nefis bir gönderi>]
-```    
-
-Ya da belki `baslik` alanında içinde 'Nefis' kelimesini içeren tüm gönderileri görmek istiyoruz?
-
 ```
->>> Post.objects.filter(baslik__contains='Nefis')
+
+Ya da belki `title` (başlık) alanında içinde 'Nefis' kelimesini içeren tüm gönderileri görmek istiyoruz?
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> Post.objects.filter(title__contains='Nefis')
 [<Post: Nefis bir gönderi>]
-```    
-
-> **Not** `baslik` ve `contains` arasında iki tane alt çizgi (`_`) var. Django'nun ORM'i bu söz dizimini, özelliği ("baslik") ve operasyon veya filtreyi ("contains") ayırmak için kullanır. Sadece tek alt çizgi kullanırsanız, "FieldError: Cannot resolve keyword baslik_contains" hatası alırsınız.
-
-Ayrıca yayınlanmış tüm gönderilerin bir listesini alabiliriz. Bunu geçmişte `yayinlanma_tarihi` alanı belirtilmiş tüm gönderileri filtreleyerek yapıyoruz:
-
 ```
+
+> **Not** `title` ve `contains` arasında iki tane alt çizgi (`_`) var. Django'nun ORM'i bu söz dizimini, özelliği ("title") ve operasyon veya filtreyi ("contains") ayırmak için kullanır. Eğer sadece tek bir alt çizgi kullanırsanız, "FieldError: Cannot resolve keyword title_contains" şeklinde bir hata alacaksınız.
+
+Ayrıca yayınlanmış tüm post'ların bir listesini alabiliriz. Bunu `published_date` (yayinlanma_tarihi) alanı geçmiş bir tarih olan tüm gönderileri filtreleyerek yapıyoruz:
+
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> from django.utils import timezone
->>> Post.objects.filter(yayinlanma_tarihi__lte=timezone.now())
->>> <QuerySet []>
+>>> Post.objects.filter(published_date__lte=timezone.now())
+<QuerySet []>
 ```
 
-Maalesef, Python konsolundan eklediğimiz gönderi henüz yayınlanmadı. Bunu değiştirebiliriz! İlk olarak yayınlamak istediğimiz gönderinin bir örneğini alalım:
+Maalesef python konsolundan eklediğimiz post (gönderi) henüz yayınlanmadı. Fakat bunu değiştirebiliriz! Önce yayınlamak istediğimiz bir gönderi nesnesi bulalım:
 
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> post = Post.objects.get(title="Harika bir gönderi")
 ```
->>> post = Post.objects.get(baslik="Harika bir gönderi")
-```    
 
-Ardından `yayinla` methodu ile gönderiyi yayınlayalım!
+Ardından `publish` (yayinla) methodu ile gönderiyi yayınlayalım:
 
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> post.publish()
 ```
->>> post.yayinla()
-```    
 
-Şimdi yayınlanmış gönderileri tekrar almaya çalışalım (3 kez yukarı yön ve ardından `enter` tuşuna basın):
+Şimdi yayınlanmış gönderileri tekrar almaya çalışalım (3 kez yukarı ok tuşuna ve ardından `enter` tuşuna basın):
 
-```
->>> Post.objects.filter(yayinlanma_tarihi__lte=timezone.now())
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> Post.objects.filter(published_date__lte=timezone.now())
 [<Post: Harika bir gönderi>]
-```  
+```
 
 ### Nesneleri Sıralama
 
-QuerySets ayrıca nesne listesini sıralamanızı da sağlar. Nesneleri `yaratilma_tarihi` özelliğine göre sıralamayı deneyelim:
+QuerySets ayrıca nesne listesini sıralamanızı da sağlar. Nesneleri `created_date` (yaratilma_tarihi) özelliğine göre sıralamayı deneyelim:
 
-```
->>> Post.objects.order_by('yaratilma_tarihi')
+{% filename %}komut-satırı{% endfilename %}
+
+```python
+>>> Post.objects.order_by('created_date')
 [<Post: Gönderi 1>, <Post: Gönderi 2>, <Post: Harika bir gönderi>, <Post: Nefis bir gönderi>]
-```    
+```
 
 Başına `-` ekleyerek sıralamayı tersine de çevirebiliriz:
 
-```
->>> Post.objects.order_by('-yaratilma_tarihi')
-[<Post: Nefis bir gönderi>, <Post: Harika bir gönderi>, <Post: Gönderi 2>, <Post: Gönderi 1>]
-```    
+{% filename %}komut-satırı{% endfilename %}
 
-### Sorgu Setlerini Zincirlemek
+```python
+>>> Post.objects.order_by('-created_date')
+[<Post: Nefis bir gönderi>, <Post: Harika bir gönderi>, <Post: Gönderi 2>, <Post: Gönderi 1>]>
+```
+
+### QuerySets (SorguSetlerini) Zincirlemek (Chaining)
 
 Sorgu setlerini **zincirleyerek** beraber kullanabilirsiniz:
 
+```python
+>>> Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+<QuerySet [<Post: Gönderi 2>, <Post:Harika bir gönderi!>, <Post: Nefis bir gönderi>, <Post: Gönderi 1>]>
 ```
->>> Post.objects.filter(yayinlanma_tarihi__lte=timezone.now()).order_by('yayinlanma_tarihi')
-```    
 
 Zincirleme gerçekten çok güçlüdür ve oldukça karmaşık sorgular yazmanıza imkan sağlar.
 
-Güzel! Şimdi bir sonraki bölüm için hazırız. Kabuğu kapatmak için, şunu yazalım:
+Güzel! Şimdi bir sonraki bölüm için hazırız. Komut satırını kapatmak için, şunu yazalım:
 
-```
+{% filename %}komut-satırı{% endfilename %}
+
+```python
 >>> exit()
 $
 ```

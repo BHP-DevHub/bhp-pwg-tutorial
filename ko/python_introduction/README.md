@@ -1,3 +1,5 @@
+{% set warning_icon = '<span class="glyphicon glyphicon-exclamation-sign" style="color: red;" aria-hidden="true" data-toggle="tooltip" title="An error is expected when you run this command!" ></span>' %}
+
 # 파이썬 시작하기
 
 > **Note** 이 장의 일부는 [Geek Girls Carrots 튜토리얼](https://github.com/ggcarrots/django-carrots)을 기초로 작성되었습니다. 
@@ -18,7 +20,7 @@
 {% filename %}command-line{% endfilename %}
 ```
 $ python3
-Python 3.5.1 (...)
+Python 3.6.1 (...)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
@@ -134,7 +136,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 새로운 것을 배워봅시다. 총 글자 수도 알아냈듯이 숫자 수도 알 수 있을까요? `len(304023)`을 입력하고 `엔터`를 입력하세요.
 
-{% filename %}command-line{% endfilename %}
+{% filename %}{{warning_icon}}command-line{% endfilename %}
 ```python
 >>> len(304023)
 Traceback (most recent call last):
@@ -142,7 +144,9 @@ Traceback (most recent call last):
 TypeError: object of type 'int' has no len()
 ```
 
-첫 번째 에러가 나타났어요! "int"(정수)객체는 길이가 없기 때문이지요. 이제 어떻게 할 수 있을까요? 숫자(number)를 문자열(String)로 바꿔 쓸 수 있지 않을까요? 문자열은 길이를 갖고 있으니까요, 그렇죠?
+첫 번째 에러가 나타났어요! 여기서 {{warning_icon}} 아이콘은 `이 코드는 여러분이 예상하는 대로 실행되지 않을 것입니다.`를 의미합니다. (의도적으로 만들어낸 것이라도) 실수도 배움의 중요한 과정 중 하나랍니다!
+
+"int"(정수)객체는 길이가 없기 때문이지요. 이제 어떻게 할 수 있을까요? 숫자(number)를 문자열(String)로 바꿔 쓸 수 있지 않을까요? 문자열은 길이를 갖고 있으니까요, 그렇죠?
 
 {% filename %}command-line{% endfilename %}
 ```python
@@ -168,7 +172,7 @@ TypeError: object of type 'int' has no len()
 >>> name = "Ola"
 ```
 
-봤죠? 간단해요. 매우 쉬어요! "이름은 올라와 같다"라고 쓰는 거에요.
+봤죠? 간단해요. 매우 쉬워요! "이름은 올라와 같다"라고 쓰는 거에요.
 
 여러분도 알겠지만, 프로그램은 이전에 수행한 내용을 보여주지 않아요. 그렇다면 변수값을 알려면 어떻게 해야할까요? `name`를 입력하고 `엔터`를 입력하세요.
 
@@ -207,7 +211,7 @@ TypeError: object of type 'int' has no len()
 
 그런데 만약 잘못된 변수명을 입력하면 어떻게 나올까요?
 
-{% filename %}command-line{% endfilename %}
+{% filename %}{{warning_icon}}command-line{% endfilename %}
 ```python
 >>> city = "Tokyo"
 >>> ctiy
@@ -234,7 +238,7 @@ NameError: name 'ctiy' is not defined
 Maria
 ```
 
-`name`을 쳤을 때, 파이썬 해석기는 'name' 변수의 문자열 *표현(representatio)*으로 응답하는데, 그 모양은 작은따옴표('')로 둘러싸인 M-a-r-i-a 문자입니다. `print(name)`라고 치면, 파이썬은 화면에 따옴표없이 더 깔끔한 화면을 보여(`print`)줍니다.
+`name`을 쳤을 때, 파이썬 해석기는 'name' 변수의 문자열 *표현(representation)*으로 응답하는데, 그 모양은 작은따옴표('')로 둘러싸인 M-a-r-i-a 문자입니다. `print(name)`라고 치면, 파이썬은 화면에 따옴표없이 더 깔끔한 화면을 보여(`print`)줍니다.
 
 나중에 차차 알게 될 거지만, `print()`는 함수 안에 있는 내용을 출력할 때, 여러 내용들을 확인하고 싶을 때 유용하게 사용됩니다.
 
@@ -373,7 +377,7 @@ Ola
 
 만약 파이썬에 키(key)에 대응하는 값이 없다면 어떻게 될까요? 그럼 테스트 해봅시다!
 
-{% filename %}command-line{% endfilename %}
+{% filename %}{{warning_icon}}command-line{% endfilename %}
 ```python
 >>> participant['age']
 Traceback (most recent call last):
@@ -477,9 +481,9 @@ False
 `>`와 `<`는 알겠는데, 그렇다면 `>=`와 `<=`는 무슨 뜻일까요? 아래 내용을 읽어보세요. :
 
 - x `>` y : x는 y보다 크다
-- x `<` : x는 y보다 작다
-- x `<=` : x가 y보다 작거나 같다
-- x `>=` : x가 y보다 크거나 같다
+- x `<` y : x는 y보다 작다
+- x `<=` y : x가 y보다 작거나 같다
+- x `>=` y : x가 y보다 크거나 같다
 
 잘했어요! 좀 더 해볼까요?
 
@@ -500,12 +504,12 @@ True
 
 "사과를 오렌지에 비교하기"라는 말을 들어본 적이 있나요? 파이썬에게 시켜봅시다.
 
-{% filename %}command-line{% endfilename %}
+{% filename %}{{warning_icon}}command-line{% endfilename %}
 ```python
 >>> 1 > 'django'
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: unorderable types: int() > str()
+TypeError: '>' not supported between instances of 'int' and 'str'
 ```
 
 이처럼 파이썬은 숫자(`int`)와 문자열(`str`)을 비교할 수 없어요. 대신 **TypeError**를 보여줘 두 타입이 서로 비교 대상이 아니라는 것을 알려줍니다.
@@ -647,7 +651,7 @@ if 3 > 2:
 
 저장하고 실행하면 아래와 같은 에러가 보일 거에요.
 
-{% filename %}command-line{% endfilename %}
+{% filename %}{{warning_icon}}command-line{% endfilename %}
 ```
 $ python3 python_intro.py
 File "python_intro.py", line 2
@@ -788,7 +792,7 @@ hi()
 
 우리가 만든 첫 번째 함수네요!
 
-파일 맨 밑에 왜 함수의 이름을 적었는지 궁금할 거에요.왜냐하면 파이썬은 파일을 위에서 아래로 읽어 실행하기 때문이에요. 함수를 사용하기 위해서는 하단에 다시 적어야 합니다.
+파일 맨 밑에 왜 함수의 이름을 적었는지 궁금할 거에요. 왜냐하면 파이썬은 파일을 위에서 아래로 읽어 실행하기 때문이에요. 함수를 사용하기 위해서는 하단에 다시 적어야 합니다.
 
 {% filename %}command-line{% endfilename %}
 ```
@@ -827,7 +831,7 @@ hi()
 
 > **Note**: `if`문 안의 `print()`함수는 4칸을 들여쓰기 했습니다. 조건문에 해당하는 경우에만 실행되게 만들기 위해서에요. 이제 어떻게 되는지 보세요.
 
-{% filename %}command-line{% endfilename %}
+{% filename %}{{warning_icon}}command-line{% endfilename %}
 ```
 $ python3 python_intro.py
 Traceback (most recent call last):
@@ -876,7 +880,7 @@ Hi anonymous!
 
 어때요, 정말 굉장하지 않나요? 이로써 인사 함수가 호출될 때마다, 매번 사람 이름을 반복할 필요가 없어요. 그래서 함수가 필요답니다. 매번 똑같은 코드를 반복해 작성하지 않아도 돼요!
 
-좀 더 똑똑하게 만들어 볼게요. - 2명 이상 이름이 있는 경우, 모든 이름마다 조건문을 추가하는 건 꽤 귀찮은 일이 될거에요. 그렇죠?
+좀 더 똑똑하게 만들어 볼게요. 2명 이상 이름이 있는 경우, 모든 이름마다 조건문을 추가하는 건 꽤 귀찮은 일이 될거에요. 그렇죠?
 
 {% filename %}python_intro.py{% endfilename %}
 ```python
@@ -911,14 +915,14 @@ Hi Rachel!
 girls = ['Rachel', 'Monica', 'Phoebe', 'Ola', 'You']
 ```
 
-우리는 여자 아이들 이름을 불러 인사를 하고 싶어요. 우리는 이미 `hi` 함수를 만들었으니 반복문을 사용해봅시다. :
+우리는 여자 아이들 이름을 불러 인사를 하고 싶어요. 우리는 이미 `hi` 함수를 만들었으니 반복문을 사용해봅시다. :)
 
 {% filename %}python_intro.py{% endfilename %}
 ```python
 for name in girls:
 ```
 
-The ```for```문은 ```if```문과  다음 줄은 4칸 들여쓰기를 해야합니다.
+```for```과 ```if```문의 다음 줄은 4칸 들여쓰기를 해야합니다.
 
 아래 완성된 코드입니다.
 
@@ -951,7 +955,7 @@ Next girl
 ```
 
 
-`girls` 리스트의 요소마다 여러분이 `for`문에 넣은, 들여쓰기를 한 모든 코드들이 반복됩니다.
+`girls` 리스트의 요소마다 여러분이 `for`문 안에 들여쓰기를 한 모든 코드들이 반복됩니다.
 
 `for`문에 `range()` 함수로 숫자범위를 지정해 사용할 수 있어요.
 

@@ -2,6 +2,7 @@
 
 *   [Введение](README.md)
 *   [Установка](installation/README.md)
+*   [Установка (chromebook)](chromebook_setup/README.md)
 *   [Как работает Интернет](how_the_internet_works/README.md)
 *   [Знакомство с командной строкой](intro_to_command_line/README.md)
 *   [Установка Python](python_installation/README.md)
@@ -12,7 +13,7 @@
 *   [Твой первый проект на Django!](django_start_project/README.md)
 *   [Модели Django](django_models/README.md)
 *   [Администрирование Django](django_admin/README.md)
-*   [Публикация!](deploy/README.md)
+*   [Публикация в Интернет!](deploy/README.md)
 *   [URL-адреса Django](django_urls/README.md)
 *   [Представления в Django – время создавать!](django_views/README.md)
 *   [Введение в HTML](html/README.md)

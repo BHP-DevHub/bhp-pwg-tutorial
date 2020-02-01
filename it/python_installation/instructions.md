@@ -24,17 +24,10 @@ Se non hai Python installato o se vuoi una versione diversa, puoi installarla co
 
 Digita questo comando nella tua console:
 
-    $ sudo apt-get install python3.4
+    $ sudo apt install python3.4
     
 
-#### Fedora (fino a 21)
-
-Usa questo comando nella tua console:
-
-    $ sudo yum install python3.4
-    
-
-#### Fedora (22+)
+#### Fedora
 
 Usa questo comando nella tua console:
 

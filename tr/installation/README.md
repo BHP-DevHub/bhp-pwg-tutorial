@@ -1,10 +1,10 @@
 # Eğer tutorial'ı evde yapıyorsanız
 
-Eğer tutorial'ı [Django Girls etkinlikleri](http://djangogirls.org/events/)nin birinde değil de evde yapıyorsanız, bu bölümü atlayabilirsiniz ve doğrudan [İnternet nasıl çalışır](../how_the_internet_works/README.md) bölümüne gidebilirsiniz.
+Eğer tutorial'ı [Django Girls etkinliklerinden](https://djangogirls.org/events/) birinde değil de evde yapıyorsanız, bu bölümü şimdi tamamen atlayabilirsiniz ve direkt [İnternet nasıl çalışıyor](../how_the_internet_works/README.md) bölümüne geçebilirsiniz.
 
-Çünkü burada anlatılanları tutorial boyunca zaten işliyoruz, bu kısım kurulum talimatlarının tek yerde toparlandığı ek bir sayfa sadece. Django Girls etkinlikleri, tutorial sırasında uğraşmamak için herşeyi kurduğumuz bir "kurulum akşamı"nı içeriyor. Bu sayfayı onun için kullanıyoruz.
+Çünkü burada anlatılanları tutorial boyunca zaten işliyoruz, bu kısım kurulum talimatlarının tek yerde toparlandığı ek bir sayfa sadece. Django Girls etkinliği, çalıştay boyunca tekrar kurulumla uğraşmamak adına her şeyi yüklediğimiz bir "Kurulum akşamı" içeriyor.
 
-Eğer yararlı olduğunu düşünüyorsanız, bu bölümü okuyabilirsiniz. Ama bilgisayarınıza bir şeyler kurmadan önce bir kaç şey öğrenmeye başlamak istiyorsanız, bu bölümü atlayın. Size kurulum işlerini sonra anlatacağız.
+Eğer bunu yararlı bulduysanız, bu bölümü de takip edebilirsiniz. Ama bilgisayarınıza birkaç şey yüklemeden önce bir şeyler öğrenmeye başlamak istiyorsanız, bu bölümü atlayın. Daha sonra kurulum kısmını size açıklayacağız.
 
 İyi şanslar!
 
@@ -12,17 +12,22 @@ Eğer yararlı olduğunu düşünüyorsanız, bu bölümü okuyabilirsiniz. Ama 
 
 Atölyede bir blog geliştireceksiniz, eğitim günü kodlamaya hazır olmanız için önceden ayarlamakta fayda olan birkaç kurulum var.
 
+<!--sec data-title="Chromebook setup (if you're using one)"
+data-id="chromebook_setup" data-collapse=true ces--> {% include "/chromebook_setup/instructions.md" %} 
+
+<!--endsec-->
+
 # Python Yükleyin
 
 {% include "/python_installation/instructions.md" %}
 
-# Bir "virtualenv" kurun ve Django'yu yükleyin
-
-{% include "/django_installation/instructions.md" %}
-
 # Bir kod düzenleyicisi yükleyin
 
 {% include "/code_editor/instructions.md" %}
+
+# Bir "virtualenv" kurun ve Django'yu yükleyin
+
+{% include "/django_installation/instructions.md" %}
 
 # Git yükleyin
 
@@ -30,7 +35,7 @@ Atölyede bir blog geliştireceksiniz, eğitim günü kodlamaya hazır olmanız 
 
 # GitHub hesabı oluşturun
 
-[GitHub.com](http://www.github.com)'a gidin ve ücretsiz yeni bir kullanıcı hesabı oluşturun.
+[GitHub.com](https://www.github.com)'a gidin ve ücretsiz yeni bir kullanıcı hesabı oluşturun.
 
 # PythonAnywhere hesabı oluşturun
 
@@ -40,10 +45,14 @@ Atölyede bir blog geliştireceksiniz, eğitim günü kodlamaya hazır olmanız 
 
 Tebrikler, ayarlarınız tamam ve hazırsınız! Eğer atölyeden önce hala vaktiniz var ise, başlangıç bölümlerinden bazılarını okumanız yararlı olacaktır:
 
-  * [İnternet nasıl çalışır](../how_the_internet_works/README.md)
+* [İnternet nasıl çalışır](../how_the_internet_works/README.md)
 
-  * [Komut satırına giriş](../intro_to_command_line/README.md)
+* [Komut satırına giriş](../intro_to_command_line/README.md)
 
-  * [Python'a giriş](../python_introduction/README.md)
+* [Python'a giriş](../python_introduction/README.md)
 
-  * [Django nedir?](../django/README.md)
+* [Django nedir?](../django/README.md)
+
+# Çalışmanın tadına varın!
+
+İşe başladığınızda doğrudan [Your first Django project!](../django_start_project/README.md) gidebilirsiniz çünkü çoktan önceki bölümlerde bu konuları çözdük.

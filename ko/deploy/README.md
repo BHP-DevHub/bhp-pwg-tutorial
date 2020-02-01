@@ -4,11 +4,11 @@
 
 지금까지는 웹사이트를 내 컴퓨터에서만 볼 수 있었어요. 지금부터 웹사이트를 배포방법을 배워봅시다! 배포(deployment)는 애플리케이션을 인터넷에 올려놓아 다른 사람들도 볼 수 있게 해주는 것 말해요. :)
 
-앞에서 배웠듯이, 웹사이트는 서버라는 곳에 들어갑니다. 인터넷 상에 서버를 제공하는 업체들은 참 많습니다. 우리는 이 중에 비교적 배포 과정이 간단한 [PythonAnywhere](https://pythonanywhere.com/)을 사용할 거에요. PythonAnywhere는 방문자가 아주 많지 않은 소규모 애플리케이션을 위한 무료 서비스를 제공하고 있습니다. 지금 우리가 만드는 웹사이트도 해당됩니다. 
+앞에서 배웠듯이, 웹사이트는 서버라는 곳에 들어갑니다. 인터넷 상에 서버를 제공하는 업체들은 참 많습니다. 우리는 이 중에 비교적 배포 과정이 간단한 [PythonAnywhere](https://www.pythonanywhere.com/)을 사용할 거에요. PythonAnywhere는 방문자가 아주 많지 않은 소규모 애플리케이션을 위한 무료 서비스를 제공하고 있습니다. 지금 우리가 만드는 웹사이트도 해당됩니다. 
 
-우리가 사용할 다른 외부 서비스는 [GitHub](https://github.com/)이라는 코드 호스팅 서비스입니다. 요즘에는 모든 프로그래머들은 Github 계정을 가지고 있으니, 여러분도 Github 계정을 만들어봐요!
+우리가 사용할 다른 외부 서비스는 [GitHub](https://github.com/)이라는 코드 호스팅 서비스입니다. 요즘에는 모든 프로그래머들은 GitHub 계정을 가지고 있으니, 여러분도 GitHub 계정을 만들어봐요!
 
-로컬컴퓨터, Github, Pythonanywhere 이 세 곳은 모두 중요해요. 로컬 컴퓨터는 개발 및 테스트를 수행하는 곳이 될 것입니다. 개발이 완료되면 프로그램 복사본을 GitHub에 저장합니다. 웹사이트는 PythonAnywhere에 있고 GitHub에서 코드 사본을 업데이트할 거에요.
+로컬컴퓨터, GitHub, Pythonanywhere 이 세 곳은 모두 중요해요. 로컬 컴퓨터는 개발 및 테스트를 수행하는 곳이 될 것입니다. 개발이 완료되면 프로그램 복사본을 GitHub에 저장합니다. 웹사이트는 PythonAnywhere에 있고 GitHub에서 코드 사본을 업데이트할 거에요.
 
 # Git 설치하기
 > **Note** 이미 설치가 완료되었다면, 다시 할 필요가 없어요. 다음 장으로 넘어가서 Git 저장소를 만드는 것부터 시작하세요.
@@ -48,9 +48,9 @@ db.sqlite3
 
 > **Note** 파일명 앞에 마침표로 시작하는 것이 중요합니다! 만약 파일을 만드는 것이 어렵다면 (예를 들어 맥은 파인더에서 마침표로 시작하는 파일을 생성하는 걸 좋아하지 않아요) `다른 이름으로 저장(Save As)` 기능을 사용하세요.
 
-> **Note** `.gitignore` 파일에 있는 `db.sqlite3`이라는 파일은 모든 게시물이 저장된 로컬 데이터베이스입니다. PythonAnywhere는 다른 데이터베이스를 사용하기 때문에 저장소에 추가될 필요가 없습니다. 다른 데이터베이스로는 SQLite로도 사용하지만 보통은 SQLite보다 훨씬 많은 방문자를 보유한 웹사이트일 경우 MySQL을 사용합니다. GiteHub 저장소에 SQLite 데이터베이스를 제외하고 저장하면, 지금까지 작성한 모든 게시물을 로컬에서만 사용할 수 있으므로 실제 운영하는 프로덕션 환경에서는 다시 새 데이터베이스를 추가해야합니다. 로컬 데이터베이스는 데이터가 삭제되도 괜찮은 테스트 공간으로만 사용하세요.
+> **Note** `.gitignore` 파일에 있는 `db.sqlite3`이라는 파일은 모든 게시물이 저장된 로컬 데이터베이스입니다. PythonAnywhere는 다른 데이터베이스를 사용하기 때문에 저장소에 추가될 필요가 없습니다. 다른 데이터베이스로는 SQLite로도 사용하지만 보통은 SQLite보다 훨씬 많은 방문자를 보유한 웹사이트일 경우 MySQL을 사용합니다. GitHub 저장소에 SQLite 데이터베이스를 제외하고 저장하면, 지금까지 작성한 모든 게시물을 로컬에서만 사용할 수 있으므로 실제 운영하는 프로덕션 환경에서는 다시 새 데이터베이스를 추가해야합니다. 로컬 데이터베이스는 데이터가 삭제돼도 괜찮은 테스트 공간으로만 사용하세요.
 
-`git add`하기 전이나 변경된 것이 있는지 잘 모를 때마다 `git status`명령어를 사용하는 것은 좋은 방법이에요. 잘못된 파일이 추가되거나 커민된 경우, 이를 복구할 수 있습니다. `git status`명령은 미추적/수정된/스테이지된 파일, 브랜치 상태와 그 외 많은 정보를 보여줍니다. 실행하면 아래와 비슷하게 나타날 거에요.
+`git add`하기 전이나 변경된 것이 있는지 잘 모를 때마다 `git status`명령어를 사용하는 것은 좋은 방법이에요. 잘못된 파일이 추가되거나 커밋된 경우, 이를 복구할 수 있습니다. `git status`명령은 미추적/수정된/스테이지된 파일, 브랜치 상태와 그 외 많은 정보를 보여줍니다. 실행하면 아래와 비슷하게 나타날 거에요.
 
 
 {% filename %}command-line{% endfilename %}
@@ -58,7 +58,7 @@ db.sqlite3
 $ git status
 On branch master
 
-Initial commit
+No commits yet
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -100,7 +100,7 @@ $ git commit -m "My Django Girls app, first commit"
 
 이제 내 컴퓨터의 Git 저장소를 GitHub에 있는 저장소로 연결해야합니다.
 
-콘솔에 다음과 같이 입력하세요. (`<your-github-username>`에 꺽쇠괄호(<>)를 떼고 내 Github 사용자이름을 입력하세요)
+콘솔에 다음과 같이 입력하세요. (`<your-github-username>`에 꺽쇠괄호(<>)를 떼고 내 GitHub 사용자이름을 입력하세요)
 
 {% filename %}command-line{% endfilename %}
 ```
@@ -125,7 +125,7 @@ Branch master set up to track remote branch master from origin.
 
 <!--TODO: maybe do ssh keys installs in install party, and point ppl who dont have it to an extension -->
 
-이제 여러분의 코드가 gitHub에 저장됐어요! 가서 확인해보세요! [Django](https://github.com/django/django), [장고걸스 튜토리얼][https://github.com/DjangoGirls/tutorial]뿐만 아니라 수많은 훌륭한 오픈소스 소프트웨어 프로젝트들이 gitHub에서 호스팅하고 있어요. 방금 여러분이 한 것처럼 말이죠. :)
+이제 여러분의 코드가 gitHub에 저장됐어요! 가서 확인해보세요! [Django](https://github.com/django/django), [장고걸스 튜토리얼](https://github.com/DjangoGirls/tutorial)뿐만 아니라 수많은 훌륭한 오픈소스 소프트웨어 프로젝트들이 gitHub에서 호스팅하고 있어요. 방금 여러분이 한 것처럼 말이죠. :)
 
 
 # PythonAnywhere에 블로그 설정하기
@@ -179,17 +179,17 @@ PythonAnywhere에서도 내 컴퓨터에 있는 것과 같이 작동할 수 있�
 ```
 $ cd my-first-blog
 
-$ virtualenv --python=python3.5 myvenv
-Running virtualenv with interpreter /usr/bin/python3.5
+$ virtualenv --python=python3.6 myvenv
+Running virtualenv with interpreter /usr/bin/python3.6
 [...]
 Installing setuptools, pip...done.
 
 $ source myvenv/bin/activate
 
-(myvenv) $  pip install django~=1.10.0
+(myvenv) $  pip install django~=2.0
 Collecting django
 [...]
-Successfully installed django-1.10.4
+Successfully installed django-2.0.6
 ```
 
 > **Note** `pip install`은 설치가 될 때까지 인내심이 조금 필요해요. 하지만 몇 분 안에 완료될 거니 조금만 기다려보세요. 만약 5분 이상 시간이 지났다면, 무엇인가 잘못된 거니 코치에게 물어보세요.
@@ -217,7 +217,7 @@ Operations to perform:
 
 로고를 클릭해 PythonAnywhere 대시보드로 와서 **Web**을 클릭하고 **Add a new web app**를 선택하세요.
 
-도메인 이름을 확정한 후, 대화창에 **수동설정(manual configuration)** ("Django"옵션이 *아니에요*) 을 클릭하세요. 다음, **Python 3.5**을 선택하고 다음(Next)을 클릭하면 마법사가 종료됩니다.
+도메인 이름을 확정한 후, 대화창에 **수동설정(manual configuration)** ("Django"옵션이 *아니에요*) 을 클릭하세요. 다음, **Python 3.6**을 선택하고 다음(Next)을 클릭하면 마법사가 종료됩니다.
 
 > **Note** "Django"가 아니라 꼭 "수동설정(Manual configuration)"을 선택하세요. 기본 PythonAnywhere Django 설정을 위해서는 이렇게 하는 것이 더 좋아요. ;-)
 
@@ -278,6 +278,8 @@ application = StaticFilesHandler(get_wsgi_application())
 *   WSGI 설정 파일에 실수가 있을 때 -- my-first-blog-folder 폴더의 경로를 올바르게 입력했었나요?
 
 *   Web app에서 그랬듯이 virtualenv에도 같은 파이썬 버전을 선택했나요? 둘 다 모두 3.4 버전이어야 해요 위키에서 [일반적인 디버깅 팁](https://www.pythonanywhere.com/wiki/DebuggingImportError)을 확인할 수 있어요.
+
+*   만약 `Invalid HTTP_HOST header: <your-site-name> . You may need to add <your-site-name> to ALLOWED_HOSTS.` 라는 오류메세지가 나온다면 `/mysite/settings.py`의 마지막 줄에 `ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '.pythonanywhere.com']` 를 추가 한 뒤에 다시 **Web** 탭에서 `Reload <your-site-name`이라는 녹색 버튼을 눌러 주세요.
 
 [PythonAnywhere wiki에 있는 일반적인 디버깅 방법](https://www.pythonanywhere.com/wiki/DebuggingImportError)도 있습니다.
 

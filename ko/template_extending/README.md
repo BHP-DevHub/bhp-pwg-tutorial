@@ -21,7 +21,7 @@
 
 {% filename %}blog/templates/blog/base.html{% endfilename %}
 ```html
-{% load staticfiles %}
+{% load static %}
 <html>
     <head>
         <title>Django Girls blog</title>
@@ -84,7 +84,7 @@
 이 코드는 무엇을 의미일까요? 우리는 `block`을 만든 거에요! 템플릿 태그 `{% block %}`으로 HTML 내에 들어갈 수 있는 공간을 만들었어요. `base.html`을 확장해 다른 템플릿에도 가져다 쓸 수 있게 한 거죠. 어떻게 동작하는지 보여 드릴게요.
 
 이제 `base.html`을 파일을 저장을 하고, `blog/templates/blog/post_list.html` 파일을 다시 엽니다. 
-{% raw %}`{% for post in posts %}`부터 `{% endfor %}`까지 내용 전체를 지우세요. 그럼 아래와 같이 될 겁니다. :{% endraw %}
+{% raw %}`{% for post in posts %}`부터 `{% endfor %}`까지만 남기고 나머지는 전부  지우세요. 그럼 아래와 같이 될 겁니다. :{% endraw %}
 
 
 {% filename %}blog/templates/blog/post_list.html{% endfilename %}
@@ -100,10 +100,10 @@
 {% endfor %}
 ```
 
-우리는 이 코드를 모든 컨텐츠 블록에 대한 템플릿의 일부로 거에요.
+우리는 이 코드를 모든 컨텐츠 블록에 대한 템플릿의 일부로 쓸 거에요.
 이 파일에 블록 태그를 추가해봅시다!
 
-{% raw %}블록 태그가 `base.html`파일의 태그와 일치해야겠죠. 또 콘텐츠 블록에 속한 모든 코드를 포함하게 만들어야 할 거에요. 이를 위해서 `{% block content %}`와 `{% endblock content %}`사이에 모든 코드를 넣으세요. 이렇게 말이죠. : {% endraw %}
+{% raw %}블록 태그가 `base.html`파일의 태그와 일치해야겠죠. 또 콘텐츠 블록에 속한 모든 코드를 포함하게 만들어야 할 거에요. 이를 위해서 `{% block content %}`와 `{% endblock %}`사이에 모든 코드를 넣으세요. 이렇게 말이죠. : {% endraw %}
 
 {% filename %}blog/templates/blog/post_list.html{% endfilename %}
 ```html
@@ -139,6 +139,6 @@
 {% endblock %}
 ```
 
-다 되었어요! 여러분의 웹사이트가 잘 작동하는지 확인해보세요.)
+다 되었어요! 여러분의 웹사이트가 잘 작동하는지 확인해보세요. :)
 
 > 만약 `TemplateDoesNotExists(템플릿파일이 존재하지 않습니다)`라는 에러 메세지가 난다면 `blog/base.html`파일이 없이 콘솔에서 `runserver`가 작동되고 있는 경우입니다. 이런 경우, (Ctrl+C)를 눌러서 멈춘 후 `python manage.py runserver`명령어로 다시 서버를 실행하세요.

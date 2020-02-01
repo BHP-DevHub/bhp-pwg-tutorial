@@ -1,6 +1,6 @@
 # Django Forms
 
-Günlüğümüzde son olarak yapmak istediğimiz şey, günlük yazılarını eklemek ve düzenlemek için güzel bir yapı oluşturmak. Django'nun `admin` arayüzü çok havalı, ama özelleştirilmesi ve güzelleştirilmesi oldukça zor. Bunu `forms` (formlar) kullanarak kendi arayüzümüz üstünde mutlak bir güce sahip olacağız - neredeyse hayal ettiğimiz her şeyi yapabiliriz!
+Blogumuzda yapmak istediğimiz son şey blog yazılarını eklemek ve düzenlemek için güzel bir yapı oluşturmak. Django'nun `admin` arayüzü çok havalı, ama özelleştirilmesi ve güzel hale getirilmesi oldukça zor. `forms` (formlar) ile kendi arayüzümüz üstünde mutlak bir güce sahip olacağız - neredeyse hayal ettiğimiz her şeyi yapabiliriz!
 
 Django formlarının güzel yanı, hem sıfırdan bir form tanımlayabilmemiz hem de sonuçları modele kaydedecek bir `ModelForm` oluşturabilmemizdir.
 
@@ -10,12 +10,13 @@ Django'nun diğer önemli parçaları gibi, formların da kendi dosyası var: `f
 
 `blog` dizinimizde bu isimde bir dosya oluşturmalıyız.
 
-```
-blog
-└── forms.py
-```    
+    blog
+       └── forms.py
+    
 
 Tamam, hadi dosyayı açalım ve aşağıdaki kodu yazalım:
+
+{% filename %}blog/forms.py{% endfilename %}
 
 ```python
 from django import forms
@@ -26,37 +27,41 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('baslik', 'yazi',)
-```    
+        fields = ('title', 'text',)
+```
 
-Önce Django formları (`from django import forms`) ve tabii ki `Post` modelimizi içe aktarmalıyız (`from .models import Post`).
+Önce Django formları (`from django import forms`) ve tabii ki `Post` modelimizi (`from .models import Post`) import komutu ile dahil etmeliyiz.
 
-`PostForm`, tahmin etmiş olabileceğiniz gibi, formumuzun ismi. Django'ya bu formun bir `ModelForm` olduğunu belirtmeliyiz. Bunu `forms.ModelForm` sayesinde Django bizim için yapacaktır.
+Tahmin etmiş olabileceğiniz gibi, formumuzun ismi `PostForm`. Django'ya bu formun bir `ModelForm` olduğunu belirtmeliyiz. Bunu `forms.ModelForm` sayesinde Django bizim için yapacaktır.
 
-Sırada Django'ya bu formu (`model = Post`) oluşturmak için hangi modelin kullanılması gerektiğini anlattığımız `class Meta` var).
+Sırada Django'ya bu formu oluşturmak için hangi modelin kullanılması gerektiğini (`model = Post`) anlattığımız `class Meta` var.
 
-Son olarak, formumuzda hangi alan(lar)ın bulunması gerektiğini söyleyebiliriz. Bu senaryoda sadece `baslik` ve `yazi` alanlarının gösterilmesini istiyoruz - `yazar` şu anda giriş yapmış olması gereken kişidir (yani siz!) ve biz ne zaman yeni bir yazı oluşturursak `yaratilma_tarihi` otomatik olarak (örn. kod içinde) ayarlanmalıdır, değil mi?
+Son olarak, formumuzda hangi alan(lar)ın bulunması gerektiğini söyleyebiliriz. Bu senaryoda sadece `title` ve `text` alanlarının gösterilmesini istiyoruz - `author` şu anda giriş yapmış olması gereken kişidir (yani siz!) ve biz ne zaman yeni bir yazı oluşturursak `created_date` otomatik olarak (örn. kod içinde) ayarlanmalıdır, değil mi?
 
 Ve hepsi bu kadar! Şimdi tek yapmamız gereken formu bir *view* içinde kullanıp, template (şablon) içinde göstermek.
 
-Bir kez daha: sayfaya bir bağlantı, bir URL, bir view ve bir template üreteceğiz.
+Bir kere daha sayfaya bir bağlantı, bir url, bir view ve bir template oluşturacağız.
 
 ## Formun bulunduğu sayfaya bağlantı oluşturma
 
-Şimdi `blog/templates/blog/base.html` şablonunu açma zamanı. Öncelikle `page-header` adlı `div` öğesinin içine bir bağlantı ekleyeceğiz:
+Şimdi `blog/templates/blog/base.html` isimli template'i açma zamanı. Öncelikle `page-header` adlı `div` öğesinin içine bir bağlantı ekleyeceğiz:
+
+{% filename %}blog/templates/blog/base.html{% endfilename %}
 
 ```html
 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-```    
+```
 
-Yeni view'i `post_new` olarak isimlendirdik.
+Yeni view'in (görünümün) adını `post_new` koymak istiyoruz. `"glyphicon glyphicon-plus"` class'ı kullandığımız bootstrap teması tarafından sağlanıyor ve bizim için bir artı işareti gösterecek.
 
-Yukarıdaki satırı ekledikten sonra html dosyanız böyle görünmeli:
+Satırı ekledikten sonra, HTML dosyanız bu şekilde görünmelidir:
+
+{% filename %}blog/templates/blog/base.html{% endfilename %}
 
 ```html
 {% load staticfiles %}
-<html>
-   <head>
+< html>
+    <head>
         <title>Django Girls blog</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -78,146 +83,166 @@ Yukarıdaki satırı ekledikten sonra html dosyanız böyle görünmeli:
         </div>
     </body>
 </html>
-```    
+```
 
-Dokümanı kaydedip http://127.0.0.1:8000 sayfasını yeniledikten sonra, siz de tanıdık `NoReverseMatch` hatasını görüyor olmalısınız, değil mi?
+Dosyayı kaydedip http://127.0.0.1:8000 sayfasını yeniledikten sonra, siz de bilindik `NoReverseMatch` hatasını görüyor olmalısınız, görüyorsunuz değil mi? Güzel!
 
 ## URL
 
-`blog/urls.py` dosyasını açalım ve yeni bir satır ekleyelim:
+`blog/urls.py` dosyasını açıp şu satırı ekleyelim:
+
+{% filename %}blog/urls.py{% endfilename %}
 
 ```python
-    url(r'^post/new/$', views.post_new, name='post_new'),
-```    
+path('post/new', views.post_new, name='post_new'),
+```
 
 Ve kodun son hali şu şekilde görünecektir:
 
+{% filename %}blog/urls.py{% endfilename %}
+
 ```python
-from django.conf.urls import include, url
+from django.urls import path 
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.post_list, name='post_list'),
-    url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
-    url(r'^post/new/$', views.post_new, name='post_new'),
+    path('', views.post_list, name='post_list'),
+    path('post/<int:pk>/', views.post_detail, name='post_detail'),
+    path('post/new/', views.post_new, name='post_new'),
 ]
-```    
+```
 
-Sayfayı yeniledikten sonra, `AttributeError` şeklinde bir hata görürüz, bunun sebebi de henüz `post_new` view'ını (görünümünü) kodlamamış olmamız. Şimdi bu dosyayı da ekleyelim.
+Sayfayı yeniledikten sonra `post_new` view'ını oluşturmadığımız için `AttributeError` hatası alacağız. Şimdi onu ekleyelim.
 
 ## post_new view
 
 Şimdi `blog/views.py` dosyasını açıp aşağıdaki satırları diğer `from` satırlarının olduğu yere ekleyelim:
 
+{% filename %}blog/views.py{% endfilename %}
+
 ```python
 from .forms import PostForm
-```    
+```
 
-ve bizim *view*'ımız:
+Ve sonra bizim *view*'ımız:
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 def post_new(request):
     form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
-```    
+```
 
-Yeni bir `Post` formu oluşturmak için `PostForm()` fonksiyonunu çağırmak ve template'e iletmek gerekir. Bu *view*'a geri döneceğiz, fakat öncesinde form için hızlıca bir şablon oluşturalım.
+Yeni bir `Post` formu oluşturmak için `PostForm()` fonksiyonunu çağırmak ve template'e iletmek gerekir. *view* kısmına geri döneceğiz, ancak şimdilik form için bir template oluşturalım.
 
 ## Template
 
 Öncelikle `blog/templates/blog` dizininde `post_edit.html` isimli bir dosya oluşturmalıyız. Bir formu çalışır hale getirmek için birkaç şeye ihtiyacımız var:
 
-*   form'u görüntülemeliyiz. Bunu basitçe bu şekilde yapabiliriz: `{% raw %}{{ form.as_p }}{% endraw %}`.
-*   yukarıdaki örnek satır HTML form etiketi içine alınmalı: `<form method="POST">...</form>`
-*   bir `Kaydet` butonuna ihtiyacımız var. Bunu bir HTML butonu ile yapıyoruz: `<button type="submit">Kaydet</button>`
-*   son olarak, hemen `<form ...>` etiketinden sonra `{% raw %}{% csrf_token %}{% endraw %}` satırını eklememiz lazım. Formlarımızın güvenliğini sağladığı için bu çok önemlidir! Bunu koymayı unutup formu kaydedersek Django hata verecektir:
+* Formu göstermek zorundayız. Örneğin bunu şu şekilde yapabiliriz {% raw %}`{{ form.as_p }}`{% endraw %}.
+* Yukarıdaki örnek satır HTML form etiketi içine alınmalı: `<form method="POST">...</form>`.
+* Bir `Kaydet` butonuna ihtiyacımız var. Bunu Bir HTML butonu ile yapıyoruz: `<button type="submit">Kaydet</button>`.
+* Ve son olarak, açılıştan hemen sonra `<form ...>` etiketini eklememiz gerekiyor {% raw %}`{% csrf_token %}`{% endraw %}. Formlarımızın güvenliğini sağladığı için bu çok önemlidir! Eğer bu kısmı unutursak, formu kaydetmeye çalıştığımızda Django şikayet edecektir:
 
-![CSFR Korumalı sayfa][1]
+![CSFR Korumalı sayfa](images/csrf2.png)
 
- [1]: images/csrf2.png
+Tamam, hadi `post_edit.html` deki HTML'e bakalım:
 
-Peki, şimdi de `post_edit.html` in içindeki HTML kodunun nasıl görünmesi gerektiğine bakalım:
+{% filename %}blog/templates/blog/post_edit.html{% endfilename %}
 
 ```html
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>Yeni gönderi</h1>
+    <h1>Yeni post</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Kaydet</button>
     </form>
 {% endblock %}
-```    
+```
 
 Yenileme zamanı! Hey! Formun görüntülendi!
 
-![Yeni form][2]
+![Yeni form](images/new_form2.png)
 
- [2]: images/new_form2.png
+Ama, bekle bir dakika! `title` ve `text` alanlarına bir şey yazdığımızda ve kaydetmeye çalıştığımızda, ne olacak?
 
-Ama, bir dakika! `baslik` ve `yazi` alanlarına bir şey yazıp kaydettiğimizde ne olacak?
+Hiçbir şey! Bir kere daha aynı sayfadayız, metnimiz gitmiş ve yeni gönderi de eklenmemiş. Peki neyi yanlış yaptık?
 
-Hiçbir şey! Yine aynı sayfaya döndük ve bütün yazdıklarımız kayboldu... ve yeni bir gönderi de eklenmemiş. Yanlış giden ne?
-
-Yanıt: hiçbir şey. Sadece *view*'ımızda biraz daha iş yapmamız gerekiyor.
+Yanıt: hiçbir şeyi. Sadece *view*'ımızda biraz daha iş yapmamız gerekiyor.
 
 ## Formu kaydetme
 
-Tekrar `blog/views.py` dosyasını açalım. Şuan `post_new` view'ı içinde sadece bunlar var:
+Bir kez daha `blog/views.py`'yi açalım. Hali hazırda `post_new` view'ının tamamı aşağıdaki gibi olmalı:
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 def post_new(request):
     form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
-```    
+```
 
-Formu kaydettiğimizde tekrar aynı view'a yönlendirileceğiz, ama bu sefer `request` nesnesinde, daha doğrusu `request.POST` (isimlendirmesinin, bizim blog uygulamasının "post" modeli ile alakası yok, gerçekte veri gönderdiğimiz (İngilizcede "post" işlemi) için isimlendirme bu şekilde) içerisinde, daha fazla verimiz olacak. HTML dosyasında `<form>` tanımımızdaki `method="POST"` değişkenini hatırlıyor musun? Formdan gelen tüm alanlar şimdi `request.POST`'un içerisinde. `POST`'un ismini değiştirmememiz lazım (`method` için geçerli diğer değer sadece `GET`'dir, ama şimdi ikisi arasındaki farkın ne olduğunu anlatacak kadar vaktimiz yok).
+Formu gönderdiğimizde, aynı view'a yönlendirileceğiz, bu sefer `request` içinde daha fazla bilgi olacak, özellikle `request.POST` içinde (isimlendirmenin blog gönderisiyle bir bağlantısı yoktur; daha fazla veri göndermemizle ilgilidir). HTML dosyasında `<form>` tanımımızdaki `method="POST"` değişkenini hatırlıyor musunuz ? Formdan gelen tüm alanlar şimdi `request.POST`'un içerisinde. `POST`'un ismini değiştirmememiz lazım (`method` için geçerli diğer değer sadece `GET`'dir, ama şimdi ikisi arasındaki farkın ne olduğunu anlatacak kadar vaktimiz yok).
 
-Oluşturduğumuz *view*'da iki ayrı durumu halletmemiz gerek. Birincisi: sayfaya ilk eriştiğimiz ve boş bir form istediğimiz zaman. İkincisi: henüz yazdığımız tüm form verileriyle *view*'a geri döndüğümüz zaman. Yani bir koşul eklememiz gerekiyor (bunun için `if` kullanacağız).
+*view* içinde ele almamız gereken iki farklı durum var: ilki, sayfaya ilk kez eriştiğimizde boş bir form döndürmek isteğimiz durum, ikincisi ise *view*'e forma girdiğimiz form verisiyle geri döndüğümüz durum. Yani bir koşul eklememiz gerekiyor (bunun için `if` kullanacağız):
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 if request.method == "POST":
     [...]
 else:
     form = PostForm()
-```    
+```
 
-Şimdi boşluğu `[...]` doldurma zamanı geldi. `method`, `POST` ise o zaman `PostForm`u verilerle oluşturmamız lazım, değil mi? Bunu yapmak için:
+Boşlukları doldurma zamanı `[...]`. Eğer `method` `POST` ise `PostForm`'u forma girilen veri ile oluşturmalıyız, değil mi? Bunu şu şekilde yapacağız:
 
-``` python
+{% filename %}blog/views.py{% endfilename %}
+
+```python
 form = PostForm(request.POST)
 ```
 
-Çok kolay! Şimdi de formu (yani tüm gerekli alanların doldurulduğu ve hatalı değerlerin kaydedilmeyeceğini) kontrol etmemiz lazım. Bunu da `form.is_valid()` ile yapıyoruz.
+Bir sonraki işimiz formun doğru olup olmadığını kontrol etmek (tüm gerekli alanlar ayarlanmış ve yanlış değer verilmediyse). Bunu şu şekilde yaparız `form.is_valid()`.
 
 Formun doğruluğunu kontrol ediyoruz ve doğru ise kaydedebiliriz!
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 if form.is_valid():
     post = form.save(commit=False)
-    post.yazar = request.user
-    post.yayinlanma_tarihi = timezone.now()
+    post.author = request.user
+    post.published_date = timezone.now()
     post.save()
-```    
+```
 
-Temel olarak, burada iki şey yaptık: formu `form.save` ile kaydettik ve bir yazar ekledik (`PostForm`'da bir `yazar` tanımlı olmadığı ve bu zorunlu bir alan olduğu için!). `commit=False`, `Post` modelini henüz kaydetmek istemediğimizi belirtir - ilk önce yazarı eklemek istiyoruz. Genellikle `form.save()`, `commit=False` olmadan kullanacaksınız, ama bu durumda, bunu kullanmamız gerekiyor. `post.save()` değişiklikleri (yazarı ekleme) koruyacaktır ve yeni bir blog gönderisi oluşturulur!
+Temel olarak, burada iki şey yaptık: formu `form.save` ile kaydettik ve bir author (yazar) ekledik (`PostForm`'da bir `author` tanımlı olmadığı ve bu zorunlu bir alan olduğu için). `commit=False` `Post` modelini henüzkaydetmek istemiyoruz demektir - öncelikle yazarı eklemeliyiz. Çoğu zaman `form.save()`'i `commit=False` olmadan kullanacağız, fakat bu durumda bu parametre ile kullanmalıyız. `post.save()` değişiklikleri saklar (author ekleyerek) ve yeni blog yazısı oluşturulur!
 
-Hemen `post_detail` sayfasına gidip yeni yaratmış olduğumuz blog postunu görsek harika olur, degil mi? Bunu yapabilmek için önemli bir şey daha lazım:
+Son olarak hızlı bir şekilde yeni oluşturulmuş blog gönderimiz için `post_detail` sayfasına gidebilirsek harika olurdu değil mi? Bunu yapmak için bir tane daha import yapmamız gerekli:
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 from django.shortcuts import redirect
-```    
-
-Bunu dosyanın en başına ekleyelim. Şimdi yeni yarattığımız blog postu için `post_detail` sayfasına gidebiliriz.
-
-```python
-    return redirect('post_detail', pk=post.pk)
 ```
 
-`post_detail` gitmek istediğimiz görünümün ismidir. Unutmayalım ki bu *view* için bir `pk` değişkeni lazım. Bu değeri görünümlere aktarmak için `pk=post.pk` yazarız. Burada `post` yeni yarattığımız blog postudur!
+Bunu dosyanın en başına ekleyelim. Şimdi yeni yarattığımız blog postu için "`post_detail` sayfasına git" diyebiliriz:
 
-Çok şey söyledik ama herhalde *view* u tümüyle bir görmek isteriz artık, değil mi?
+{% filename %}blog/views.py{% endfilename %}
+
+```python
+return redirect('post_detail', pk=post.pk)
+```
+
+`post_detail`, gitmek istediğimiz view'ın adı. Unutmayalım ki bu *view* için bir `pk` değişkeni lazım. Bu değeri viewlere aktarmak için `pk=post.pk` yazarız. Burada `post` yeni yarattığımız blog postudur!
+
+Çok şey söyledik ama artık *view*'ı tümüyle bir görmek isteriz, değil mi?
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 def post_new(request):
@@ -225,77 +250,81 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.yazar = request.user
-            post.yayinlanma_tarihi = timezone.now()
+            post.author = request.user
+            post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})yazar
+    return render(request, 'blog/post_edit.html', {'form': form})
+```
 
+Bakalım çalışacak mı? http://127.0.0.1:8000/post/new/ sayfasına gidelim, bir `title` ve `text` ekleyelim, kaydedelim... ve işte oldu! Yeni blog postu eklendi ve `post_detail` sayfasına yönlendirildik!
 
-Bakalım çalışacak mı? http://127.0.0.1:8000/post/new/ sayfasına gidip bir `baslik` ve `yazi` ekleyelim, sonra da kaydedelim... ve işte! Yeni blog postu eklenmiş ve `post_detail` sayfasına yönlendirildik!
-
-Postu kaydetmeden önce yayin tarihine değer atandığını fark etmiş olabilrsin. Daha sonra *yayınla butonu* nu **Django Girls Tutorial: Ek konular** da anlatacağız.
+Postu kaydetmeden önce publish date'e değer atandığını fark etmiş olabilirsin. Daha sonra *publish button*'nı **Django Girls Tutorial: Ek konular**'da anlatacağız.
 
 Süper!
 
+> Yakın zamanda Django'nun admin arayüzünü kullandığımız için, sistem hala giriş yaptığımızı düşünüyor. Bazı durumlar bizim oturumdan çıkmamıza neden olabilir (web tarayıcısını kapatmak, veritabanını tekrar başlatmak, vb). Eğer oturum açık olmadığı için post yaratmada hata alırsak admin sayfası olan http://127.0.0.1:8000/admin adresine gidip tekrar oturum açmalıyız. Bu sorunu geçici olarak düzeltecektir. Kalıcı çözüm, ana tutorialdan sonra **Ödev: Web sitene güvenlik ekleme!** bölümünde anlatılacak.
+
+![Oturum hatası](images/post_create_error.png)
+
 ## Form doğrulama
 
-Şimdi de Django formlarının ne kadar havalı olduğunu görelim. Bir blog postunun `baslik` ve `yazi` alanları olmalı. `Post` modelimizde bu alanlar mecburi değil demedik ( `yayinlanma_tarihi` demiş olduğumuz gibi), dolayısı ile Django bu alanlara değer atanması gerektiğini varsayar.
+Şimdi de Django formlarının ne kadar havalı olduğunu görelim. Bir blog postunun `title` ve `text` alanları olmalı. `Post` modelimizde bu alanların gerekli olmadığını söylemedik (`published_date`'te yaptığımızın tersine), bu yüzden Django varsayılan olarak bu alanın dolu olmasını bekliyor.
 
-`baslik` veya `yazi` olmadan formu kaydetmeye çalışın. Ne olacak, tahmin et!
+Formu `title` ve `text` olmadan kaydetmeye çalışalım. Ne olacak, tahmin edin!
 
-![Form doğrulama][3]
+![Form doğrulama](images/form_validation2.png)
 
- [3]: images/form_validation2.png
-
-Django tüm alanlara doğru tür değerlerin atandığını bizim için kontrol ediyor. Ne güzel, değil mi?
-
-> Yakın zamanda Django'nun admin arayüzünü kullandığımız için, sistem bizi hala oturumda varsayıyor. Bazı durumlar bizim oturumdan çıkmamıza neden olabilir (web tarayıcısını kapatmak, veritabanını tekrar başlatmak, vb). Eğer oturumda olan kullanıcı olmadığı için post yaratmada hata alırsak admin sayfası olan http://127.0.0.1:8000/admin gidip tekrar bir oturum açmalıyız. Bu durumu geçici de olsa da halleder. Kalıcı çözüm, ana tutorialdan sonra **Ödev: Web sitene güvenlik ekleme!** bölümünde anlatılacak.
-
-![Oturum hatası][4]
-
- [4]: images/post_create_error.png
+Django tüm alanların doğruluğunu bizim için kontrol ediyor. Ne güzel, değil mi?
 
 ## Form düzenleme
 
-Artık yeni bir form oluşturmayı biliyoruz. Peki, mevcut bir formu güncellemek için ne yapmalı? Demin yaptığımıza çok benziyor. Şimdi, hızlıca bir kaç şey yaratalım (anlamadığın bir şey olduğu zaman, mentöre veya önceki bölümlere danışabilirsin, çünkü bu adımları daha önce yaptık).
+Artık yeni bir form oluşturmayı biliyoruz. Peki, mevcut bir formu güncellemek için ne yapmalı? Bu az önce yaptığımız şeyle çok benzer. Hızlıca bazı önemli şeyleri oluşturalım. (Eğer birşeyi anlamazsan, mentörüne sormalısın veya önceki bölümlere bakmalısın, çünkü bütün bu adımları daha önce bitirdik.)
 
-`blog/templates/blog/post_detail.html` dosyasını açıp şu satırı ekleyelim:
+`blog/templates/blog/post_detail.html` dosyasını açalım ve şu satırı ekleyelim
 
-```python
+{% filename %}blog/templates/blog/post_detail.html{% endfilename %}
+
+```html
 <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-```    
+```
 
-ki template buna benzesin:
+böylece şablon şöyle görünecektir:
+
+{% filename %}blog/templates/blog/post_detail.html{% endfilename %}
 
 ```html
 {% extends 'blog/base.html' %}
 
 {% block content %}
     <div class="post">
-        {% if post.yayinlanma_tarihi %}
+        {% if post.published_date %}
             <div class="date">
-                {{ post.yayinlanma_tarihi }}
+                {{ post.published_date }}
             </div>
         {% endif %}
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h1>{{ post.baslik }}</h1>
-        <p>{{ post.yazi|linebreaks }}</p>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
     </div>
 {% endblock %}
-```    
+```
 
-`blog/urls.py` dosyasına şu satırı ekleyelim:
+`blog/urls.py` dosyasını açıp şu satırı ekleyelim:
+
+{% filename %}blog/urls.py{% endfilename %}
 
 ```python
-url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
-```    
+    path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
+```
 
-Daha önce kullandığımız `blog/templates/blog/post_edit.html` template'i tekrar kullanacağız, tek eksik bir *view*.
+Daha önce kullandığımız `blog/templates/blog/post_edit.html` template'ini tekrar kullanacağız, geriye bir tek *view* kalıyor.
 
 Şimdi `blog/views.py` dosyasını açıp en sonuna şu satırı ekleyelim:
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 def post_edit(request, pk):
@@ -304,96 +333,117 @@ def post_edit(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.yazar = request.user
-            post.yayinlanma_tarihi = timezone.now()
+            post.author = request.user
+            post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
-```  
+```
 
-Bu nerdeyse bizim `post_new` view'e benziyor, değil mi? Ama, tam da değil. İlk önce: Url'den ekstra bir `pk` parameteresi yolladık. Sonra: güncellemek istediğimiz `Post` modelini `get_object_or_404(Post, pk=pk)` ile alıp, bir form yarattığımızda bu postu bir `örnek kopya` (instance) olarak hem formu kaydettiğmizde yolluyoruz:
+Bu nerdeyse bizim `post_new` view'inin aynısı, değil mi? Ama, tam da değil. Özellikle url'lerden ekstra bir `pk` parametresi geçiriyoruz. Sonra,`get_object_or_404(Post, pk=pk)` ile düzenlemek istediğimiz `Post` modelini alıyoruz ve daha sonra bir form oluşturduğumuzda bu yazı objesini `instance` olarak geçiriyoruz, aynı şekilde formu kaydettiğimizde de…
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 form = PostForm(request.POST, instance=post)
-```    
+```
 
-hem de güncellemek istediğimiz postu görmek için form açtığımız zaman yolluyoruz:
+…ve düzenlemek için bu post ile ilgili bir form açtığımızda:
+
+{% filename %}blog/views.py{% endfilename %}
 
 ```python
 form = PostForm(instance=post)
 ```
 
-Haydi, deneyelim. Bakalım çalışacak mı? `post_detail` sayfasına gidelim. Sağ üst köşede bir edit (güncelleme) butonu olmalı:
+Tamam, çalışıp çalışmadığını test edelim! `post_detail` sayfasına gidelim. Sağ üst köşede bir düzenleme butonu olmalı:
 
-![Düzenle butonu][5]
-
- [5]: images/edit_button2.png
+![Düzenle butonu](images/edit_button2.png)
 
 Butona tıklarsak blog postunu görmemiz lazım:
 
-![Formu düzenle][6]
+![Form düzenleme](images/edit_form2.png)
 
- [6]: images/edit_form2.png
+İstediğimiz gibi title ve text'i değiştirebilir ve sonra da kaydedebiliriz!
 
-İstediğimiz gibi başlık ve yazıyı değiştirebilir ve sonra da kaydedebilriz!
+Tebrikler! Uygulamamız gittikçe tamamlanıyor!
 
-Tebrikler! Uygulaman gittikçe tamamlanıyor!
-
-Django formları hakkında daha fazla bilgi bulmak için https://docs.djangoproject.com/en/1.10/topics/forms/ adresindeki dokümanlara bakabilirsin
+Eğer Django formlarıyla ilgili daha çok bilgiye ihtiyacın varsa, dökümanı okumalısın: https://docs.djangoproject.com/en/2.0/topics/forms/
 
 ## Güvenlik
 
-Bir bağlantıya (link) tıklayarak yeni bir blog oluşturabilmek harika! Ancak, şu haliyle siteye gelen herkes bir blog yaratıp kaydedebilir. Bu da istenen bir durum değil. Butonun sadece sana görünmesini sağlayalım.
+Bir linke tıklayarak yeni bir blog oluşturabilmek harika! Ama şu anda sizin sitenizi ziyaret eden herkes yeni bir blog post yapabilecek ve bu muhtemelen isteyeceğiniz bir şey değil. Butonun sadece bize görünmesini sağlayalım.
 
 `blog/templates/blog/base.html` dosyasında yarattığımız `page-header` `div` ve anchor etiketlerini (tags) bulalım. Şuna benziyor olmalı:
 
+{% filename %}blog/templates/blog/base.html{% endfilename %}
+
 ```html
 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-```    
+```
 
-Şimdi bir `{% if %}` etiketi daha ekleyeceğiz ki link sadece admin olarak oturum açmış kişilere görünsün. Şimdilik, bu kişi sadece sensin! `<a>` etiketini şöyle değiştirelim:
+Linkin sadece admin olarak giriş yapmış kullanıcılara gözükmesi için başka bir `{% if %}` etiketi ekleyeceğiz. Şu anda bu kişi sensin! `<a>` etiketini şöyle değiştirelim:
+
+{% filename %}blog/templates/blog/base.html{% endfilename %}
 
 ```html
 {% if user.is_authenticated %}
     <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 {% endif %}
-```    
-
-Bu `{% if %}` linkin tarayıcıya ancak kullanıcı oturum açmış ise gönderilmesini sağlar. Bu yeni post yaratılmasını kesin olarak engellemese de iyi bir başlangıç. Güvenlik konusu ek derslerde daha çok ele alınacak.
-
-Oturum içi olduğumuz için, şimdi sayfayı yenilersek, farklı bir şey görmeyeceğiz. Sayfayı farklı bir tarayıcıda veya incognito bir pencerede yükleyelim. O zaman bu link görünmeyecek!
-
-## Bir şey daha: deployment (yayına alma) zamanı!
-
-Bakalım PythonAnywhere'de calışacak mı? Tekrar yayına alalım!
-
-*   İlk önce kodumuzu commit edelim, sonra Github'a push edelim
-
-```
-$ git status
-$ git add -A .
-$ git status
-$ git commit -m "Web sitesine güncelleme ve yaratma için view eklendi."
-$ git push
-```    
-
-*   Sonra bir [PythonAnywhere Bash konsol][7] una gidip:
-
- [7]: https://www.pythonanywhere.com/consoles/
-
-```
-$ cd ilk-blogum
-$ source myvenv/bin/activate
-(myvenv)$ git pull
-[...]
-(myvenv)$ python manage.py collectstatic
-[...]
 ```
 
-*   Nihayet, [Web tab][8] ına gidip **Reload** edelim.
+Bu `{% if %}` linkin sadece sayfayı görüntüleyen kullanıcı oturum açtıysa görüntülenmesini sağlayacak. Bu yeni post yaratılmasını kesin olarak engellemese de iyi bir başlangıç. Güvenlik konusu ek derslerde daha çok ele alınacak.
 
- [8]: https://www.pythonanywhere.com/web_app_setup/
+Az evvel detay sayfamıza eklediğimiz düzenle ikonunu hatırladınız mı? Aynı değişikliği oraya da eklemek istiyoruz. Böylelikle başka insanlar var olan gönderileri düzenleyemeyecekler.
 
-O kadar! Tebrikler :)
+`blog/templates/blog/post_detail.html` dosyasını açalım ve şu satırı ekleyelim:
+
+{% filename %}blog/templates/blog/post_detail.html{% endfilename %}
+
+```html
+<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+```
+
+Bu şekilde değiştirelim:
+
+{% filename %}blog/templates/blog/post_detail.html{% endfilename %}
+
+```html
+{% if user.is_authenticated %}
+     <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+```
+
+Yüksek olasılıkla login yapmış olduğunuz için sayfayı yenilediğinizde farklı bir şey göremeyeceksiniz. Sayfayı farklı bir tarayıcı veya görünmez pencere ile yükleyelim (Windows Edge üzerinde "InPrivate" olarak adlandırılan), göreceksiniz ki bağlantı ve ikon artık görüntülenmiyor!
+
+## Son bir şey daha: deployment (yayına alma) zamanı!
+
+Bakalım PythonAnywhere'de de çalışacak mı? Tekrar yayına alalım!
+
+* İlk önce kodumuzu commit edelim, sonra Github'a push edelim:
+
+{% filename %}komut-satırı{% endfilename %}
+
+    $ git status
+    $ git add --all .
+    $ git status
+    $ git commit -m "Sitede gönderi oluşturmak ve düzenlemek için view'ler eklendi."
+    $ git push
+    
+
+* Sonra bir [PythonAnywhere Bash konsol](https://www.pythonanywhere.com/consoles/) una gidip:
+
+{% filename %}komut-satırı{% endfilename %}
+
+    $ cd ~/<your-pythonanywhere-username>.pythonanywhere.com
+    $ git pull
+    [...]
+    
+
+(Açı parantezleri olmadan `<your-pythonanywhere-username>`'i gerçek PythonAnywhere kullanıcı isminizle değiştirmeyi unutmayın).
+
+* Son olarak, ["Web" page](https://www.pythonanywhere.com/web_app_setup/) bölümüne geçin (konsolun sağ üst tarafındaki menü düğmesini kullanın) ve **Yeniden yükle** tuşuna basın. Değişiklikleri görmek için https://yourname.pythonanywhere.com blogunuzu yenileyin.
+
+İşte bu kadar! Tebrikler :)
